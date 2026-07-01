@@ -1,36 +1,185 @@
-# Nanobanana 2 Lite Image Generation: API, Pricing, Examples, and Integration Guide
+# Nanobanana 2 Lite Image Generation Agent Skill and API Guide
 
 <p align="center">
-  <a href="README.md">English</a> ·
-  <a href="README.es.md">Español</a> ·
-  <a href="README.pt.md">Português</a> ·
-  <a href="README.ja.md">日本語</a> ·
-  <a href="README.ko.md">한국어</a> ·
-  <a href="README.de.md">Deutsch</a> ·
-  <a href="README.fr.md">Français</a> ·
-  <a href="README.tr.md">Türkçe</a> ·
-  <a href="README.zh-TW.md">繁體中文</a> ·
-  <a href="README.zh-CN.md">简体中文</a> ·
-  <a href="README.ru.md">Русский</a>
+  <strong>Install the EvoLink agent skill first, then run Nanobanana 2 Lite Image Generation through the API.</strong>
 </p>
 
 <p align="center">
   <a href="https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-lite-image-generate?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image-generate-api-skill">
-    <img src="./assets/banner.jpg" alt="Nanobanana 2 Lite Image Generation API and skill guide" width="100%" />
+    <img src="assets/banner.jpg" alt="Nanobanana 2 Lite Image Generation API and agent skill banner" width="100%" />
   </a>
 </p>
 
 <p align="center">
-  Run Nanobanana 2 Lite Image Generation through EvoLink, then install the matching agent skill.
+  <a href="https://www.npmjs.com/package/evolink-nanobanana-2-lite"><img src="https://img.shields.io/npm/v/evolink-nanobanana-2-lite?color=cb3837&label=npm" alt="NPM version"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
+  <a href="https://github.com/cheercheung/nanobanana-2-lite-image-generate-api-skill/stargazers"><img src="https://img.shields.io/github/stars/cheercheung/nanobanana-2-lite-image-generate-api-skill?style=flat" alt="GitHub stars"></a>
+  <a href="https://github.com/cheercheung/nanobanana-2-lite-image-generate-api-skill/commits/main/"><img src="https://img.shields.io/github/last-commit/cheercheung/nanobanana-2-lite-image-generate-api-skill" alt="Last commit"></a>
 </p>
 
-<p align="left">
-  <a href="https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-lite-image-generate?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image-generate-api-skill">View Nanobanana 2 Lite Image Generation pricing</a> ·
-  <a href="https://evolink.ai/signup?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image-generate-api-skill">Get your API key</a> ·
-  <a href="https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-lite-image-generate">Read Nanobanana 2 Lite Image Generation API docs</a>
+<p align="center">
+  <a href="#menu">Menu</a> •
+  <a href="#installation">Install</a> •
+  <a href="#agent-auto-install">Agent Auto-Install</a> •
+  <a href="#api-quick-start">API Quick Start</a> •
+  <a href="#showcase">Showcase</a> •
+  <a href="https://evolink.ai/signup?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image-generate-api-skill">Get API Key</a>
 </p>
 
-## Quick Start
+<p align="center">
+  <a href="README.md"><img src="https://img.shields.io/badge/🇺🇸_English-Read-111111" alt="English"></a>
+  <a href="README.es.md"><img src="https://img.shields.io/badge/🇪🇸_Español-Ver-ffb703" alt="Español"></a>
+  <a href="README.pt.md"><img src="https://img.shields.io/badge/🇵🇹_Português-Ver-2a9d8f" alt="Português"></a>
+  <a href="README.ja.md"><img src="https://img.shields.io/badge/🇯🇵_日本語-表示-52b788" alt="日本語"></a>
+  <a href="README.ko.md"><img src="https://img.shields.io/badge/🇰🇷_한국어-보기-4ea8de" alt="한국어"></a>
+  <a href="README.de.md"><img src="https://img.shields.io/badge/🇩🇪_Deutsch-Ansehen-f4a261" alt="Deutsch"></a>
+  <a href="README.fr.md"><img src="https://img.shields.io/badge/🇫🇷_Français-Voir-e76f51" alt="Français"></a>
+  <a href="README.tr.md"><img src="https://img.shields.io/badge/🇹🇷_Türkçe-Görüntüle-d62828" alt="Türkçe"></a>
+  <a href="README.zh-TW.md"><img src="https://img.shields.io/badge/🇹🇼_繁體中文-查看-8338ec" alt="繁體中文"></a>
+  <a href="README.zh-CN.md"><img src="https://img.shields.io/badge/🇨🇳_简体中文-查看-ef476f" alt="简体中文"></a>
+  <a href="README.ru.md"><img src="https://img.shields.io/badge/🇷🇺_Русский-Смотреть-577590" alt="Русский"></a>
+</p>
+
+---
+
+> **AI Agent?** Start here: install the skill with `npx`, then read [**llms-install.md**](llms-install.md) for agent-specific setup.
+
+---
+
+<a id="menu"></a>
+
+## 📑 Menu
+
+- [Agent Skill First](#agent-skill-first)
+- [Installation](#installation)
+- [Agent Auto-Install](#agent-auto-install)
+- [Getting an API Key](#getting-an-api-key)
+- [API Quick Start](#api-quick-start)
+- [Full First-Run Flow](#full-first-run-flow)
+- [API Reference](#api-reference)
+- [Showcase](#showcase)
+- [Troubleshooting](#troubleshooting)
+- [Compatibility](#compatibility)
+- [Community](#community)
+- [License](#license)
+
+---
+
+<a id="agent-skill-first"></a>
+
+## Agent Skill First
+
+This repository is designed for agents and developers who want a one-line install path. The primary workflow is to install the skill with `npx`, let the agent read `SKILL.md`, and only then call the EvoLink API.
+
+| Skill slug | NPM package | Model ID | Primary env var |
+|---|---|---|---|
+| nanobanana-2-lite-image | evolink-nanobanana-2-lite | `gemini-3.1-flash-lite-image` | `EVOLINK_API_KEY` |
+
+---
+
+<a id="installation"></a>
+
+## Installation
+
+Install into your agent skills directory. Use npm for Claude Code, Codex, OpenClaw, and Hermes; OpenClaw users can also install directly from GitHub.
+
+### OpenClaw
+
+```bash
+openclaw skills add https://github.com/cheercheung/nanobanana-2-lite-image-generate-api-skill
+```
+
+### Install via npm (Recommended)
+
+```bash
+npx evolink-nanobanana-2-lite@latest
+```
+
+```bash
+npx evolink-nanobanana-2-lite@latest -y
+```
+
+```bash
+npx evolink-nanobanana-2-lite@latest -y --path ~/.claude/skills
+```
+
+```bash
+npx evolink-nanobanana-2-lite@latest "Create a short Nanobanana 2 Lite Image Generation demo"
+```
+
+### Manual Install
+
+```bash
+git clone https://github.com/cheercheung/nanobanana-2-lite-image-generate-api-skill.git
+cd nanobanana-2-lite-image-generate-api-skill
+npm install
+node bin/cli.js -y --path ~/.claude/skills
+```
+
+### Agent Auto-Install
+
+Use the copy-paste prompts in the next section when an agent needs to install the skill by itself.
+
+---
+
+<a id="agent-auto-install"></a>
+
+## Agent Auto-Install
+
+### Claude Code
+
+```text
+Install the Nanobanana 2 Lite Image Generation skill by running:
+
+npx evolink-nanobanana-2-lite@latest -y --path ~/.claude/skills
+
+After installation, set EVOLINK_API_KEY, read ~/.claude/skills/nanobanana-2-lite-image/SKILL.md, then run one dry run before calling the real API.
+```
+
+### Codex
+
+```text
+Install the Nanobanana 2 Lite Image Generation skill by running:
+
+npx evolink-nanobanana-2-lite@latest -y --path ~/.codex/skills
+
+After installation, set EVOLINK_API_KEY, read ~/.codex/skills/nanobanana-2-lite-image/SKILL.md, then run one dry run before calling the real API.
+```
+
+### OpenClaw
+
+```text
+Install the Nanobanana 2 Lite Image Generation skill by running:
+
+npx evolink-nanobanana-2-lite@latest -y --path ~/.openclaw/skills
+
+After installation, set EVOLINK_API_KEY, read ~/.openclaw/skills/nanobanana-2-lite-image/SKILL.md, then run one dry run before calling the real API.
+```
+
+### One-Liner
+
+```bash
+EVOLINK_API_KEY=your_key_here npx evolink-nanobanana-2-lite@latest "Create a blue ceramic cup on a white table"
+```
+
+---
+
+<a id="getting-an-api-key"></a>
+
+## Getting an API Key
+
+1. Create or open your EvoLink account.
+2. Create an API key in the dashboard.
+3. Export the key as `EVOLINK_API_KEY`.
+4. Run a dry run before spending credits on a real generation.
+
+---
+
+<a id="api-quick-start"></a>
+
+## API Quick Start
+
+Use the same API key with the image generation endpoint.
 
 ```bash
 export EVOLINK_API_KEY="your_key_here"
@@ -54,6 +203,10 @@ Example response:
 }
 ```
 
+---
+
+<a id="full-first-run-flow"></a>
+
 ## Full First-Run Flow
 
 1. Create a task with `POST /v1/images/generations`.
@@ -61,40 +214,31 @@ Example response:
 3. Poll `GET /v1/tasks/{task_id}` until the task is `completed`, or pass `callback_url`.
 4. Save the final media URL from `results` or `result_data` before it expires.
 
-See the complete examples:
-
 - [cURL complete flow](./examples/curl/complete-flow.sh)
 - [Python complete flow](./examples/python/complete_flow.py)
 - [JavaScript complete flow](./examples/javascript/complete-flow.mjs)
 
-## What Is Nanobanana 2 Lite Image Generation?
+---
+
+<a id="api-reference"></a>
+
+## API Reference
+
+### What Is Nanobanana 2 Lite Image Generation?
 
 Nanobanana 2 Lite Image Generation is an EvoLink image generation endpoint for text-to-image, image-to-image, and image editing workflows through the `gemini-3.1-flash-lite-image` model.
 
-## Supported Models / Workflows
-
-| Model | ID |
-|---|---|
-| Nanobanana 2 Lite Image Generation | `gemini-3.1-flash-lite-image` |
-
-## Choose the Right Model or Workflow
-
-| Workflow | Use when |
-|---|---|
-| API | You need direct developer integration. |
-| Skill | You want an agent to install and run the workflow. |
-
-## Endpoints
+### Endpoints
 
 | Purpose | Method | Path |
 |---|---|---|
 | Create task | `POST` | `/v1/images/generations` |
 | Query task | `GET` | `/v1/tasks/{task_id}` |
 
-## Request Parameters
+### Request Parameters
 
 | Parameter | Type | Required | Notes |
-|---|---:|---:|---|
+|---|---|---|---|
 | `model` | string | yes | Use `gemini-3.1-flash-lite-image`. |
 | `prompt` | string | yes | Prompt describing the image to generate or how to edit input images. Maximum 2000 tokens. |
 | `size` | string | no | Aspect ratio. Defaults to `auto`; supported values include `1:1`, `16:9`, `9:16`, `4:3`, `3:4`, `3:2`, `2:3`, `21:9`, and more. |
@@ -103,54 +247,11 @@ Nanobanana 2 Lite Image Generation is an EvoLink image generation endpoint for t
 | `model_params` | object | no | Model extension parameters. |
 | `callback_url` | string | no | HTTPS callback URL for task completion, failure, or cancellation. |
 
-## Response Schema
-
-Read [Response Schema](./docs/response-schema.md).
-
-## Error Handling
-
-Read [Errors](./docs/errors.md).
-
-## Callback / Webhook
-
-Read [Callbacks](./docs/callbacks.md).
-
-## Pricing
+### Pricing and Billing
 
 EvoLink returns usage details in the task creation response. The official example uses `billing_rule: "per_call"` and `credits_reserved: 8.7`; check the returned `usage` object and the EvoLink dashboard for the current account-specific charge before high-volume use.
 
-Read [Pricing](./docs/pricing.md).
-
-## Examples by Language
-
-- [cURL](./examples/curl)
-- [Python](./examples/python)
-- [JavaScript](./examples/javascript)
-
-## Production Notes
-
-- All requests require Bearer token authentication.
-- Generation APIs are asynchronous.
-- Store task IDs and final asset URLs.
-- Save generated assets promptly because media URLs may expire.
-- Prefer callbacks for production systems that should avoid long polling.
-
-## Use Cases
-
-- First-run API validation
-- Agent skill installation
-- Text-to-image generation
-- Image-to-image and image editing with reference URLs
-
-## FAQ
-
-- **Is this repository published?** Yes. The npm package is `evolink-nanobanana-2-lite`, and the GitHub repository contains the matching API examples and installable agent skill.
-- **How is billing calculated?** The create-task response includes a `usage` object with the billing rule and reserved credits. Treat the live API response and EvoLink dashboard as the source of truth.
-- **How long do result URLs last?** Generated image links are valid for 24 hours. Save outputs promptly after completion.
-- **Can I use callbacks instead of polling?** Yes. Pass `callback_url` to receive task completion, failure, or cancellation notifications.
-- **What inputs are supported?** Use `prompt` for text-to-image, and add `image_urls` for image-to-image or editing workflows.
-
-## Documentation
+### Documentation
 
 - [Read the API reference](./docs/api-reference.md)
 - [Read the task lifecycle guide](./docs/task-lifecycle.md)
@@ -159,76 +260,21 @@ Read [Pricing](./docs/pricing.md).
 - [Read callback and webhook guidance](./docs/callbacks.md)
 - [Read pricing and billing notes](./docs/pricing.md)
 
-## Related Repositories
-
-- [View this Nanobanana 2 Lite API and skill repository on GitHub](https://github.com/cheercheung/nanobanana-2-lite-image-generate-api-skill)
-- [Read the official EvoLink Nanobanana 2 Lite API docs](https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-lite-image-generate)
-
-## License
-
-MIT
-
-
-## Agent Skill
-
-This repository also contains an installable agent skill for `nanobanana-2-lite-image`.
-
-- [Skill definition](./SKILL.md)
-- [Agent install guide](./llms-install.md)
-- [Local CLI installer](./bin/cli.js)
-
-Run the local installer after review:
-
-```bash
-npx evolink-nanobanana-2-lite -y --path ~/.claude/skills
-```
-
 ---
 
-> **AI Agent?** Skip the README, go straight to [**llms-install.md**](llms-install.md) for step-by-step installation instructions designed for agents.
-
----
-
-## Installation
-
-### Quick Install
-
-```bash
-npx evolink-nanobanana-2-lite -y --path ~/.claude/skills
-```
-
-### Run Directly
-
-```bash
-npx evolink-nanobanana-2-lite "Create a short Nanobanana 2 Lite Image Generation demo"
-```
-
-### Agent Auto-Install
-
-```text
-Install the Nanobanana 2 Lite Image Generation skill by running:
-
-npx evolink-nanobanana-2-lite@latest -y --path ~/.claude/skills
-
-Then read ~/.claude/skills/nanobanana-2-lite-image/SKILL.md and run a dry run before calling the real API.
-```
-
-### Manual Install
-
-```bash
-git clone https://github.com/cheercheung/nanobanana-2-lite-image-generate-api-skill.git
-cd nanobanana-2-lite-image-generate-api-skill
-npm install
-node bin/cli.js -y --path ~/.claude/skills
-```
+<a id="showcase"></a>
 
 ## 🖼️ Showcase
 
 | Example | Result |
 |---|---|
 | First successful API call | Polls until completed and prints the final URL / text / file. |
-| Agent skill install | Installs `SKILL.md`, `_meta.json`, `scripts/`, and `references/`. |
+| Agent skill install | Installs `SKILL.md`, `_meta.json`, `scripts/`, and `references`. |
 | Dry run | Prints the request payload without spending API credits. |
+
+---
+
+<a id="troubleshooting"></a>
 
 ## Troubleshooting
 
@@ -236,18 +282,39 @@ node bin/cli.js -y --path ~/.claude/skills
 |---|---|
 | `EVOLINK_API_KEY` is missing | Export `EVOLINK_API_KEY` before running the script. |
 | Skill installed but agent cannot see it | Re-run with the correct `--path` for Claude Code, Codex, OpenClaw, or Hermes. |
-| `jq` or `curl` is missing | Install the missing binary, then rerun `npx evolink-nanobanana-2-lite -y --path <skills-dir>`. |
+| `jq` or `curl` is missing | Install the missing binary, then rerun the `npx` command. |
 | API returns `401` or `403` | Verify the EvoLink key and account access. |
-| API returns `429` or `5xx` | Retry within the approved test budget and record the failure output. |
-| Polling times out | Keep the task id, inspect the dashboard, and do not resubmit blindly. |
+| Polling times out | Keep the task ID, inspect the dashboard, and avoid blind resubmission. |
+
+---
+
+<a id="compatibility"></a>
 
 ## Compatibility
 
 | Agent | Install command |
 |---|---|
-| Claude Code | `npx evolink-nanobanana-2-lite -y --path ~/.claude/skills` |
-| Codex | `npx evolink-nanobanana-2-lite -y --path ~/.codex/skills` |
-| OpenClaw | `npx evolink-nanobanana-2-lite -y --path ~/.openclaw/skills` |
-| Hermes | `npx evolink-nanobanana-2-lite -y --path ~/.hermes/skills` |
+| Claude Code | `npx evolink-nanobanana-2-lite@latest -y --path ~/.claude/skills` |
+| Codex | `npx evolink-nanobanana-2-lite@latest -y --path ~/.codex/skills` |
+| OpenClaw | `npx evolink-nanobanana-2-lite@latest -y --path ~/.openclaw/skills` |
+| Hermes | `npx evolink-nanobanana-2-lite@latest -y --path ~/.hermes/skills` |
+
+---
+
+<a id="community"></a>
+
+## Community
+
+- [Read the official EvoLink Nanobanana 2 Lite API docs](https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-lite-image-generate)
+- [View this repository on GitHub](https://github.com/cheercheung/nanobanana-2-lite-image-generate-api-skill)
+- [Open the EvoLink signup page](https://evolink.ai/signup?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image-generate-api-skill)
+
+---
+
+<a id="license"></a>
+
+## License
+
+MIT
 
 <p align="center">Powered by EvoLink</p>
