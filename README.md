@@ -69,7 +69,7 @@ See the complete examples:
 
 ## What Is Nanobanana 2 Lite Image Generation?
 
-Nanobanana 2 Lite Image Generation is represented here as an EvoLink model repository scaffold. Verify model availability, pricing, and final API behavior before public release.
+Nanobanana 2 Lite Image Generation is an EvoLink image generation endpoint for text-to-image, image-to-image, and image editing workflows through the `gemini-3.1-flash-lite-image` model.
 
 ## Supported Models / Workflows
 
@@ -117,7 +117,7 @@ Read [Callbacks](./docs/callbacks.md).
 
 ## Pricing
 
-Pricing must be verified from the official EvoLink pricing or model page before publication.
+EvoLink returns usage details in the task creation response. The official example uses `billing_rule: "per_call"` and `credits_reserved: 8.7`; check the returned `usage` object and the EvoLink dashboard for the current account-specific charge before high-volume use.
 
 Read [Pricing](./docs/pricing.md).
 
@@ -139,11 +139,16 @@ Read [Pricing](./docs/pricing.md).
 
 - First-run API validation
 - Agent skill installation
-- Local scaffold review before public release
+- Text-to-image generation
+- Image-to-image and image editing with reference URLs
 
 ## FAQ
 
-- **Is this release-ready?** This scaffold is local-first until smoke tests and owner approvals are recorded.
+- **Is this repository published?** Yes. The npm package is `evolink-nanobanana-2-lite`, and the GitHub repository contains the matching API examples and installable agent skill.
+- **How is billing calculated?** The create-task response includes a `usage` object with the billing rule and reserved credits. Treat the live API response and EvoLink dashboard as the source of truth.
+- **How long do result URLs last?** Generated image links are valid for 24 hours. Save outputs promptly after completion.
+- **Can I use callbacks instead of polling?** Yes. Pass `callback_url` to receive task completion, failure, or cancellation notifications.
+- **What inputs are supported?** Use `prompt` for text-to-image, and add `image_urls` for image-to-image or editing workflows.
 
 ## Documentation
 

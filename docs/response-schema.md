@@ -5,11 +5,21 @@
 ```json
 {
   "id": "task-unified-xxx",
-  "object": "task",
+  "created": 1757165031,
+  "object": "image.generation.task",
   "model": "gemini-3.1-flash-lite-image",
   "status": "pending",
   "progress": 0,
-  "type": "media"
+  "task_info": {
+    "can_cancel": true,
+    "estimated_time": 45
+  },
+  "type": "image",
+  "usage": {
+    "billing_rule": "per_call",
+    "credits_reserved": 8.7,
+    "user_group": "default"
+  }
 }
 ```
 
