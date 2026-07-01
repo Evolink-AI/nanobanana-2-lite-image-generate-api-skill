@@ -1,0 +1,7 @@
+Real API smoke passed.
+Command: ./scripts/nanobanana-2-lite-image.sh "A small red apple on a white background, product photo style"
+Task ID: task-unified-1782914249-lo515i3w
+Status: completed
+Model: gemini-3.1-flash-lite-image
+RESULT=https://files.evolink.ai/000BG2E93TVWN41W8S/images/2026/07/01/aa280a122e384a9dbfaa81e8c216e577_0.jpg
+Credits used: 1.783

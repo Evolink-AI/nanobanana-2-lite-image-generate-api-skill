@@ -1,0 +1,38 @@
+{
+  "name": "evolink-nanobanana-2-lite",
+  "version": "1.0.0",
+  "description": "EvoLink API and agent skill scaffold for Nanobanana 2 Lite Image Generation.",
+  "bin": {
+    "evolink-nanobanana-2-lite": "./bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    "SKILL.md",
+    "llms-install.md",
+    "_meta.json",
+    "scripts/",
+    "references/",
+    "examples/",
+    "LICENSE"
+  ],
+  "keywords": [
+    "nanobanana-2-lite-image-generation",
+    "evolink",
+    "api",
+    "openclaw",
+    "claude-code",
+    "opencode",
+    "evolink",
+    "ai-skill"
+  ],
+  "author": "EvoLink AI",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cheercheung/nanobanana-2-lite-image-generate-api-skill"
+  },
+  "homepage": "https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-lite-image-generate",
+  "engines": {
+    "node": ">=16"
+  }
+}
