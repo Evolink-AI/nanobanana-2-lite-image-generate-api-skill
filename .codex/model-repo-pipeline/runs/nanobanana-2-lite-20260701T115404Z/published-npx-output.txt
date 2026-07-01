@@ -1,0 +1,31 @@
+{
+  "created": 1782914405,
+  "duration": 4,
+  "id": "task-unified-1782914404-w4fcqq0x",
+  "model": "gemini-3.1-flash-lite-image",
+  "object": "image.generation.task",
+  "progress": 100,
+  "result_data": [
+    {
+      "url": "https://files.evolink.ai/000BG2E93TVWN41W8S/images/2026/07/01/8469a02673764089ac146c605cdb8cb3_0.jpg"
+    }
+  ],
+  "results": [
+    "https://files.evolink.ai/000BG2E93TVWN41W8S/images/2026/07/01/8469a02673764089ac146c605cdb8cb3_0.jpg"
+  ],
+  "status": "completed",
+  "task_info": {
+    "can_cancel": false
+  },
+  "type": "image",
+  "usage": {
+    "credits_used": 1.783,
+    "image_cached_input_tokens": 0,
+    "image_input_tokens": 0,
+    "image_output_tokens": 1120,
+    "text_cached_input_tokens": 0,
+    "text_input_tokens": 57,
+    "total_tokens": 1177
+  }
+}
+RESULT=https://files.evolink.ai/000BG2E93TVWN41W8S/images/2026/07/01/8469a02673764089ac146c605cdb8cb3_0.jpg

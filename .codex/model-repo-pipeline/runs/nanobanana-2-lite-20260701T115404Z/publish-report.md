@@ -2,8 +2,8 @@
 
 ## Summary
 
-- Run id: dry-run-20260701T135844Z
-- Date: 2026-07-01T13:58:44Z
+- Run id: dry-run-20260701T135923Z
+- Date: 2026-07-01T13:59:23Z
 - Pipeline: skill-api
 - Mode: publish-skill
 - Repository: `/Users/cheercheung/agent/nanobanana-2-lite-image-generate-api-skill`
@@ -37,22 +37,115 @@ gh repo edit cheercheung/nanobanana-2-lite-image-generate-api-skill --descriptio
 
 ## Apply Results
 
-- **git init:** `applied`
-  - Detail: Initialized empty Git repository in /Users/cheercheung/agent/nanobanana-2-lite-image-generate-api-skill/.git/
-  - Command: `git init -b main`
 - **git add:** `applied`
   - Detail: (no output)
   - Command: `git add -A`
-- **git diff --cached --check:** `failed`
-  - Detail: .codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/api-smoke-report.md:33: new blank line at EOF.
-.codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/child-ledger.md:61: new blank line at EOF.
-.codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/completion-gate-report.md:165: new blank line at EOF.
-.codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/final-github-review.md:33: new blank line at EOF.
-.codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/final-template-audit.md:31: new blank line at EOF.
-.codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/full-cycle-report.md:138: new blank line at EOF.
-.codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/install-smoke-report.md:33: new blank line at EOF.
-.codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/publish-dry-report.md:85: new blank line at EOF.
+- **git diff --cached --check:** `passed`
+  - Detail: (no output)
   - Command: `git diff --cached --check`
+- **git commit:** `applied`
+  - Detail: [main (root-commit) e5745ca] release: nanobanana-2-lite-image-generate-api-skill
+ 48 files changed, 4758 insertions(+)
+ create mode 100644 .codex/model-repo-pipeline/manifests/.gitkeep
+ create mode 100644 .codex/model-repo-pipeline/runs/.gitkeep
+ create mode 100644 .codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/api-smoke-output.txt
+ create mode 100644 .codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/api-smoke-report.md
+ create mode 100644 .codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/child-ledger.md
+ create mode 100644 .codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/completion-gate-report.md
+ create mode 100644 .codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/final-github-review.md
+ create mode 100644 .codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/final-template-audit.md
+ create mode 100644 .codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/full-cycle-report.md
+ create mode 100644 .codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/install-smoke-report.md
+ create mode 100644 .codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/publish-dry-report.md
+ create mode 100644 .codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/publish-report.md
+ create mode 100644 .gitignore
+ create mode 100644 .npmignore
+ create mode 100644 LICENSE
+ create mode 100644 README.de.md
+ create mode 100644 README.es.md
+ create mode 100644 README.fr.md
+ create mode 100644 README.ja.md
+ create mode 100644 README.ko.md
+ create mode 100644 README.md
+ create mode 100644 README.pt.md
+ create mode 100644 README.ru.md
+ create mode 100644 README.tr.md
+ create mode 100644 README.zh-CN.md
+ create mode 100644 README.zh-TW.md
+ create mode 100644 SKILL.md
+ create mode 100644 _meta.json
+ create mode 100644 assets/.gitkeep
+ create mode 100644 assets/banner.jpg
+ create mode 100644 assets/banner.svg
+ create mode 100644 assets/showcase/.gitkeep
+ create mode 100755 bin/cli.js
+ create mode 100644 docs/api-reference.md
+ create mode 100644 docs/callbacks.md
+ create mode 100644 docs/errors.md
+ create mode 100644 docs/pricing.md
+ create mode 100644 docs/quickstart.md
+ create mode 100644 docs/response-schema.md
+ create mode 100644 docs/task-lifecycle.md
+ create mode 100644 docs/update-log.md
+ create mode 100755 examples/curl/complete-flow.sh
+ create mode 100644 examples/javascript/complete-flow.mjs
+ create mode 100644 examples/python/complete_flow.py
+ create mode 100644 llms-install.md
+ create mode 100644 package.json
+ create mode 100644 references/api-params.md
+ create mode 100755 scripts/nanobanana-2-lite-image.sh
+  - Command: `git commit -m 'release: nanobanana-2-lite-image-generate-api-skill'`
+- **gh repo create:** `applied`
+  - Detail: https://github.com/cheercheung/nanobanana-2-lite-image-generate-api-skill
+  - Command: `gh repo create cheercheung/nanobanana-2-lite-image-generate-api-skill --public --source . --remote origin`
+- **git push:** `applied`
+  - Detail: To https://github.com/cheercheung/nanobanana-2-lite-image-generate-api-skill.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+  - Command: `git push -u origin main`
+- **npm publish:** `applied`
+  - Detail: npm warn publish npm auto-corrected some errors in your package.json when publishing.  Please run "npm pkg fix" to address these errors.
+npm warn publish errors corrected:
+npm warn publish "bin[evolink-nanobanana-2-lite]" script name was cleaned
+npm warn publish "repository.url" was normalized to "git+https://github.com/cheercheung/nanobanana-2-lite-image-generate-api-skill.git"
+npm notice
+npm notice 📦  evolink-nanobanana-2-lite@1.0.0
+npm notice Tarball Contents
+npm notice 120B _meta.json
+npm notice 1.1kB LICENSE
+npm notice 7.6kB README.de.md
+npm notice 7.6kB README.es.md
+npm notice 7.6kB README.fr.md
+npm notice 7.6kB README.ja.md
+npm notice 7.6kB README.ko.md
+npm notice 8.1kB README.md
+npm notice 7.6kB README.pt.md
+npm notice 7.6kB README.ru.md
+npm notice 7.6kB README.tr.md
+npm notice 7.6kB README.zh-CN.md
+npm notice 7.6kB README.zh-TW.md
+npm notice 8.8kB SKILL.md
+npm notice 26.4kB bin/cli.js
+npm notice 1.5kB examples/curl/complete-flow.sh
+npm notice 2.1kB examples/javascript/complete-flow.mjs
+npm notice 2.3kB examples/python/complete_flow.py
+npm notice 2.3kB llms-install.md
+npm notice 874B package.json
+npm notice 861B references/api-params.md
+npm notice 457B scripts/nanobanana-2-lite-image.sh
+npm notice Tarball Details
+npm notice name: evolink-nanobanana-2-lite
+npm notice version: 1.0.0
+npm notice filename: evolink-nanobanana-2-lite-1.0.0.tgz
+npm notice package size: 17.2 kB
+npm notice unpacked size: 130.5 kB
+npm notice shasum: 95edd60db4b891deab287a217113fc3d9e33246b
+npm notice integrity: sha512-wyiQW/1ONkEYk[...]yT34ez4aTH0Hg==
+npm notice total files: 22
+npm notice
+npm notice Publishing to https://registry.npmjs.org/ with tag latest and public access
++ evolink-nanobanana-2-lite@1.0.0
+  - Command: `npm publish --access public`
 
 ## Issues
 
@@ -72,55 +165,9 @@ gh repo edit cheercheung/nanobanana-2-lite-image-generate-api-skill --descriptio
 
 - Current file content inspected: yes
 - Delegated example scripts inspected: none detected
-- `git status --short`: dirty
+- `git status --short`: clean
 ```text
-A  .codex/model-repo-pipeline/manifests/.gitkeep
-A  .codex/model-repo-pipeline/runs/.gitkeep
-A  .codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/api-smoke-output.txt
-A  .codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/api-smoke-report.md
-A  .codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/child-ledger.md
-A  .codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/completion-gate-report.md
-A  .codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/final-github-review.md
-A  .codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/final-template-audit.md
-A  .codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/full-cycle-report.md
-A  .codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/install-smoke-report.md
-A  .codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/publish-dry-report.md
-A  .gitignore
-A  .npmignore
-A  LICENSE
-A  README.de.md
-A  README.es.md
-A  README.fr.md
-A  README.ja.md
-A  README.ko.md
-A  README.md
-A  README.pt.md
-A  README.ru.md
-A  README.tr.md
-A  README.zh-CN.md
-A  README.zh-TW.md
-A  SKILL.md
-A  _meta.json
-A  assets/.gitkeep
-A  assets/banner.jpg
-A  assets/banner.svg
-A  assets/showcase/.gitkeep
-A  bin/cli.js
-A  docs/api-reference.md
-A  docs/callbacks.md
-A  docs/errors.md
-A  docs/pricing.md
-A  docs/quickstart.md
-A  docs/response-schema.md
-A  docs/task-lifecycle.md
-A  docs/update-log.md
-A  examples/curl/complete-flow.sh
-A  examples/javascript/complete-flow.mjs
-A  examples/python/complete_flow.py
-A  llms-install.md
-A  package.json
-A  references/api-params.md
-A  scripts/nanobanana-2-lite-image.sh
+(clean)
 ```
 - `git diff --check`: exit 0
 ```text
@@ -141,3 +188,4 @@ A  scripts/nanobanana-2-lite-image.sh
 - Push target: not pushed
 - npm publish: not run
 - Owner approvals still needed: public push/release, npm publish, real API smoke cost if applicable
+
