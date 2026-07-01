@@ -168,8 +168,8 @@ EVOLINK_API_KEY=your_key_here npx evolink-nanobanana-2-lite@latest "Create a blu
 
 ## API キーの取得
 
-1. EvoLink アカウントを作成または開きます。
-2. ダッシュボードで API キーを作成します。
+1. [EvoLink アカウントを作成または開きます](https://evolink.ai/signup?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image-generate-api-skill)。
+2. [EvoLink ダッシュボードで API キーを作成します](https://evolink.ai/dashboard?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image-generate-api-skill)。
 3. キーを `EVOLINK_API_KEY` として export します。
 4. 実際にクレジットを使う前に dry run を実行します。
 

@@ -168,8 +168,8 @@ EVOLINK_API_KEY=your_key_here npx evolink-nanobanana-2-lite@latest "Create a blu
 
 ## API 키 받기
 
-1. EvoLink 계정을 만들거나 엽니다.
-2. 대시보드에서 API 키를 만듭니다.
+1. [EvoLink 계정을 만들거나 엽니다](https://evolink.ai/signup?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image-generate-api-skill).
+2. [EvoLink 대시보드에서 API 키를 만듭니다](https://evolink.ai/dashboard?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image-generate-api-skill).
 3. 키를 `EVOLINK_API_KEY`로 내보냅니다.
 4. 실제 생성에 크레딧을 쓰기 전에 dry run을 실행합니다.
 

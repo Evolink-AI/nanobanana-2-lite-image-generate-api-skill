@@ -168,8 +168,8 @@ EVOLINK_API_KEY=your_key_here npx evolink-nanobanana-2-lite@latest "Create a blu
 
 ## API anahtarı alma
 
-1. EvoLink hesabınızı oluşturun veya açın.
-2. Dashboard içinde bir API anahtarı oluşturun.
+1. [EvoLink hesabınızı oluşturun veya açın](https://evolink.ai/signup?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image-generate-api-skill).
+2. [EvoLink dashboard içinde bir API anahtarı oluşturun](https://evolink.ai/dashboard?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image-generate-api-skill).
 3. Anahtarı `EVOLINK_API_KEY` olarak export edin.
 4. Gerçek üretimde kredi harcamadan önce dry run çalıştırın.
 

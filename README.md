@@ -168,8 +168,8 @@ EVOLINK_API_KEY=your_key_here npx evolink-nanobanana-2-lite@latest "Create a blu
 
 ## Getting an API Key
 
-1. Create or open your EvoLink account.
-2. Create an API key in the dashboard.
+1. [Create or open your EvoLink account](https://evolink.ai/signup?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image-generate-api-skill).
+2. [Create an API key in the EvoLink dashboard](https://evolink.ai/dashboard?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image-generate-api-skill).
 3. Export the key as `EVOLINK_API_KEY`.
 4. Run a dry run before spending credits on a real generation.
 
