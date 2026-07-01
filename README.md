@@ -152,17 +152,17 @@ Read [Pricing](./docs/pricing.md).
 
 ## Documentation
 
-- [API Reference](./docs/api-reference.md)
-- [Task Lifecycle](./docs/task-lifecycle.md)
-- [Response Schema](./docs/response-schema.md)
-- [Errors](./docs/errors.md)
-- [Callbacks](./docs/callbacks.md)
-- [Pricing](./docs/pricing.md)
+- [Read the API reference](./docs/api-reference.md)
+- [Read the task lifecycle guide](./docs/task-lifecycle.md)
+- [Read the response schema](./docs/response-schema.md)
+- [Read error handling guidance](./docs/errors.md)
+- [Read callback and webhook guidance](./docs/callbacks.md)
+- [Read pricing and billing notes](./docs/pricing.md)
 
 ## Related Repositories
 
-- Guide / Prompt surface: nanobanana-2-lite-image-generate-api-skill
-- API / Skill surface: nanobanana-2-lite-image-generate-api-skill
+- [View this Nanobanana 2 Lite API and skill repository on GitHub](https://github.com/cheercheung/nanobanana-2-lite-image-generate-api-skill)
+- [Read the official EvoLink Nanobanana 2 Lite API docs](https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-lite-image-generate)
 
 ## License
 
