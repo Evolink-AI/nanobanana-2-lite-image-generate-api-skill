@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: EvoLink API documentation
+    url: https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-lite-image-generate
+    about: Read the official Nanobanana 2 Lite Image Generation API docs.
+  - name: EvoLink dashboard
+    url: https://evolink.ai/dashboard
+    about: Manage API keys, credits, and account settings.
