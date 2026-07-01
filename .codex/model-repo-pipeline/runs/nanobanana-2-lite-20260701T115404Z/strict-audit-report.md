@@ -2,8 +2,8 @@
 
 ## Summary
 
-- Run id: dry-run-20260701T144853Z
-- Date: 2026-07-01T14:48:53Z
+- Run id: dry-run-20260701T151808Z
+- Date: 2026-07-01T15:18:08Z
 - Pipeline: skill-api
 - Mode: review
 - Repository: `/Users/cheercheung/agent/nanobanana-2-lite-image-generate-api-skill`
@@ -53,9 +53,9 @@ gh repo edit cheercheung/nanobanana-2-lite-image-generate-api-skill --descriptio
 
 - Current file content inspected: yes
 - Delegated example scripts inspected: none detected
-- `git status --short`: clean
+- `git status --short`: dirty
 ```text
-(clean)
+M .codex/model-repo-pipeline/runs/nanobanana-2-lite-20260701T115404Z/strict-audit-report.md
 ```
 - `git diff --check`: exit 0
 ```text
