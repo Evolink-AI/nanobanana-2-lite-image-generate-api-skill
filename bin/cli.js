@@ -24,6 +24,7 @@ const SKILL_SLUG = 'nanobanana-2-lite-image';
 const PKG_JSON = JSON.parse(fs.readFileSync(path.join(PKG_ROOT, 'package.json'), 'utf8'));
 const PKG_VERSION = PKG_JSON.version;
 const PKG_NAME = PKG_JSON.name;
+const INSTALL_KEY_URL = 'https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image';
 
 // ── Banner ────────────────────────────────────────────────────────────────────
 function printBanner() {
@@ -49,12 +50,14 @@ function printHelp() {
   console.log('  npx evolink-nanobanana-2-lite -y --path <dir>  ' + dim('# install to specific directory'));
   console.log('  npx evolink-nanobanana-2-lite --llms      ' + dim('# print agent installation guide'));
   console.log('  npx evolink-nanobanana-2-lite --skill     ' + dim('# print SKILL.md (skill definition)'));
+  console.log('  npx evolink-nanobanana-2-lite --no-open   ' + dim('# install without opening the API key page'));
   console.log('  npx evolink-nanobanana-2-lite --help      ' + dim('# show this help'));
   console.log('  npx evolink-nanobanana-2-lite --version   ' + dim('# show version'));
   console.log('');
   console.log(bold('Options:'));
   console.log('  -y, --yes        ' + dim('Non-interactive mode. Auto-detect skills dir, skip prompts.'));
   console.log('  --path <dir>     ' + dim('Install to a specific directory (used with -y).'));
+  console.log('  --no-open        ' + dim('Do not open the API key page automatically.'));
   console.log('  --llms           ' + dim('Print the agent installation guide (llms-install.md) to stdout.'));
   console.log('  --skill          ' + dim('Print the skill definition (SKILL.md) to stdout.'));
   console.log('');
@@ -70,7 +73,7 @@ function printHelp() {
   console.log('  4. Guides you through API key setup (skipped in -y mode)');
   console.log('');
   console.log(bold('Environment:'));
-  console.log('  EVOLINK_API_KEY   ' + dim('Your EvoLink API key (get one at https://evolink.ai/signup)'));
+  console.log('  EVOLINK_API_KEY   ' + dim(`Your EvoLink API key (get one at ${INSTALL_KEY_URL})`));
   console.log('');
 }
 
@@ -101,7 +104,7 @@ Replace \`{SKILLS_DIR}\` with your skills directory:
 ## Step 2: Set API Key
 
 Check if EVOLINK_API_KEY is set: echo $EVOLINK_API_KEY
-If empty, ask the user. They can get one at https://evolink.ai/signup
+If empty, ask the user. They can get one at https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image
 Then: export EVOLINK_API_KEY=their_key_here
 
 ## Step 3: Load Skill Definition
@@ -145,6 +148,44 @@ function tryExec(cmd) {
     return execSync(cmd, { stdio: 'pipe', encoding: 'utf8' }).trim();
   } catch {
     return null;
+  }
+}
+
+function openUrl(url) {
+  const platform = os.platform();
+  const command = platform === 'darwin'
+    ? 'open'
+    : platform === 'win32'
+      ? 'cmd'
+      : 'xdg-open';
+  const args = platform === 'win32' ? ['/c', 'start', '', url] : [url];
+  try {
+    const result = spawnSync(command, args, {
+      stdio: 'ignore',
+      detached: platform !== 'win32',
+    });
+    return result.error ? { ok: false, reason: result.error.message } : { ok: result.status === 0, reason: result.status === 0 ? '' : `${command} exited ${result.status}` };
+  } catch (err) {
+    return { ok: false, reason: err.message };
+  }
+}
+
+function maybeOpenKeyUrl(opts = {}) {
+  console.log(bold('  → Get your EvoLink API key: ') + cyan(INSTALL_KEY_URL));
+  if (opts.noOpen) {
+    console.log(dim('    --no-open set: not opening a browser.'));
+    return;
+  }
+  if (opts.silent) {
+    console.log(dim('    Silent mode: not opening a browser.'));
+    return;
+  }
+  const opened = openUrl(INSTALL_KEY_URL);
+  if (opened.ok) {
+    console.log(green('  ✓ Opened the API key page in your browser.'));
+  } else {
+    console.log(yellow(`  ⚠  Could not open browser: ${opened.reason || 'unknown error'}`));
+    console.log(dim('    Copy and open the URL above.'));
   }
 }
 
@@ -437,7 +478,7 @@ function verifyApiKey(key) {
 }
 
 // ── Step 4: API key setup ─────────────────────────────────────────────────────
-async function setupApiKey(rl) {
+async function setupApiKey(rl, opts = {}) {
   console.log(bold('\n[4/4] EvoLink API key setup...'));
 
   const existing = process.env.EVOLINK_API_KEY;
@@ -450,15 +491,15 @@ async function setupApiKey(rl) {
     } else {
       console.log(yellow(`  ⚠  EVOLINK_API_KEY is set but invalid: ${check.reason}`));
       console.log(dim('    Key: ' + masked));
-      console.log(dim('    Get a new one at: https://evolink.ai/dashboard'));
+      maybeOpenKeyUrl(opts);
     }
     return;
   }
 
   console.log(yellow('  ⚠  EVOLINK_API_KEY is not set.'));
   console.log('');
-  console.log('  To generate images you need a free EvoLink API key.');
-  console.log(bold('  → Sign up at: ') + cyan('https://evolink.ai/signup'));
+  console.log('  To run this skill you need an EvoLink API key.');
+  maybeOpenKeyUrl(opts);
   console.log('');
 
   const answer = await ask(rl, '  Paste your API key here (or press Enter to skip): ');
@@ -532,8 +573,8 @@ function printSuccess(installPath) {
   console.log('  3. ' + dim('Get started! Example:'));
   console.log('     ' + dim('"Use Nanobanana 2 Lite Image Generation to create a test output"'));
   console.log('');
-  console.log(dim('  Docs:      https://github.com/cheercheung/nanobanana-2-lite-image-generate-api-skill'));
-  console.log(dim('  Dashboard: https://evolink.ai/dashboard'));
+  console.log(dim('  Docs:      https://github.com/Evolink-AI/nanobanana-2-lite-image-generate-api-skill'));
+  console.log(dim(`  API keys:  ${INSTALL_KEY_URL}`));
   console.log(dim('  Support:   https://evolink.ai'));
   console.log('');
 }
@@ -559,7 +600,7 @@ function runDirect(args) {
   }
   if (!process.env.EVOLINK_API_KEY) {
     console.error(red('EVOLINK_API_KEY is not set.'));
-    console.error(dim('Get one at https://evolink.ai/signup, then run: export EVOLINK_API_KEY=your_key'));
+    console.error(dim(`Get one at ${INSTALL_KEY_URL}, then run: export EVOLINK_API_KEY=your_key`));
     process.exit(1);
   }
   const result = spawnSync('bash', [scriptPath, prompt], {
@@ -600,14 +641,15 @@ async function main() {
     runDirect(args);
   }
 
-  const silent = args.includes('--yes') || args.includes('-y');
+  const noOpen = args.includes('--no-open');
+  const silent = args.includes('--yes') || args.includes('-y') || !process.stdin.isTTY;
   const targetPath = getArgValue(args, '--path');
 
   printBanner();
 
   if (silent) {
     try {
-      const opts = { silent: true, targetPath };
+      const opts = { silent: true, targetPath, noOpen };
       const skillsDir = await detectSkillsDir(null, opts);
       const installPath = await copySkillFiles(skillsDir, null, opts);
       checkDependencies();
@@ -625,7 +667,7 @@ async function main() {
         }
       } else {
         console.log(yellow('  ⚠  EVOLINK_API_KEY is not set.'));
-        console.log(dim('    Get one at: https://evolink.ai/signup'));
+        maybeOpenKeyUrl(opts);
         console.log(dim('    Then run:   export EVOLINK_API_KEY=your_key'));
       }
 
@@ -649,11 +691,11 @@ async function main() {
   });
 
   try {
-    const opts = { silent: false, targetPath };
+    const opts = { silent: false, targetPath, noOpen };
     const skillsDir = await detectSkillsDir(rl, opts);
     const installPath = await copySkillFiles(skillsDir, rl, opts);
     checkDependencies();
-    await setupApiKey(rl);
+    await setupApiKey(rl, opts);
     printSuccess(installPath);
   } catch (err) {
     console.error(red('\n  ✗ Installation failed: ') + err.message);

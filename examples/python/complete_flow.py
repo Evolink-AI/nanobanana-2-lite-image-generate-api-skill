@@ -2,6 +2,24 @@ import os
 import time
 import requests
 
+
+def extract_result(task):
+    for key in ("result_url", "url", "file_url", "output_url", "text", "result"):
+        value = task.get(key)
+        if value:
+            return value
+    for key in ("results", "result_data"):
+        value = task.get(key)
+        if isinstance(value, list) and value:
+            first = value[0]
+            if isinstance(first, dict):
+                return first.get("url") or first.get("text")
+            return first
+        if isinstance(value, dict):
+            return value.get("url") or value.get("text")
+    return None
+
+
 api_key = os.environ.get("EVOLINK_API_KEY")
 if not api_key:
     raise SystemExit("Set EVOLINK_API_KEY first")
@@ -9,6 +27,11 @@ if not api_key:
 headers = {
     "Authorization": f"Bearer {api_key}",
     "Content-Type": "application/json",
+    "X-EvoLink-Source": "skill",
+    "X-EvoLink-Skill": "nanobanana-2-lite-image",
+    "X-EvoLink-Package": "evolink-nanobanana-2-lite",
+    "X-EvoLink-Campaign": "nanobanana-2-lite-image",
+    "X-EvoLink-Touchpoint": "first_run",
 }
 
 create_resp = requests.post(
@@ -29,7 +52,7 @@ if not task_id:
 for _ in range(120):
     poll_resp = requests.get(
         f"https://api.evolink.ai/v1/tasks/{task_id}",
-        headers={"Authorization": f"Bearer {api_key}"},
+        headers=headers,
         timeout=30,
     )
     if poll_resp.status_code >= 400:
@@ -39,22 +62,7 @@ for _ in range(120):
     status = task.get("status")
     if status == "completed":
         print(task)
-        result = (
-            task.get("result_url")
-            or task.get("url")
-            or task.get("file_url")
-            or task.get("output_url")
-            or task.get("text")
-            or task.get("result")
-        )
-        if not result and isinstance(task.get("results"), list) and task["results"]:
-            first = task["results"][0]
-            result = first.get("url") or first.get("text") if isinstance(first, dict) else first
-        if not result and isinstance(task.get("result_data"), dict):
-            result = task["result_data"].get("url") or task["result_data"].get("text")
-        if not result and isinstance(task.get("result_data"), list) and task["result_data"]:
-            first = task["result_data"][0]
-            result = first.get("url") or first.get("text") if isinstance(first, dict) else first
+        result = extract_result(task)
         if result:
             print(f"RESULT={result}")
         raise SystemExit(0)

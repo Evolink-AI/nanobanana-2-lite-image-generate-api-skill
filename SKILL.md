@@ -1,13 +1,13 @@
 ---
 name: nanobanana-2-lite-image
 description: Use Nanobanana 2 Lite Image Generation through EvoLink with runnable examples, API key guidance, and task polling.
-homepage: https://github.com/cheercheung/nanobanana-2-lite-image-generate-api-skill
-metadata: {"openclaw":{"homepage":"https://github.com/cheercheung/nanobanana-2-lite-image-generate-api-skill","requires":{"bins":["jq","curl"],"env":["EVOLINK_API_KEY"]},"primaryEnv":"EVOLINK_API_KEY"}}
+homepage: https://github.com/Evolink-AI/nanobanana-2-lite-image-generate-api-skill
+metadata: {"openclaw":{"homepage":"https://github.com/Evolink-AI/nanobanana-2-lite-image-generate-api-skill","requires":{"bins":["jq","curl"],"env":["EVOLINK_API_KEY"]},"primaryEnv":"EVOLINK_API_KEY"}}
 ---
 
 # Nanobanana 2 Lite Image Generation
 
-Nanobanana 2 Lite Image Generation is exposed here as a local-first EvoLink API and agent skill scaffold.
+Nanobanana 2 Lite Image Generation is exposed here as an EvoLink API endpoint with a matching installable agent skill.
 
 ## When to Activate This Skill
 
@@ -35,7 +35,7 @@ For example, if this SKILL.md is at `~/.claude/skills/nanobanana-2-lite-image/SK
 When this skill is first loaded, proactively greet the user and start the setup:
 
 1. Check if `EVOLINK_API_KEY` is set (run: `echo $EVOLINK_API_KEY`)
-   - **If not set:** "To run the model, you'll need an EvoLink API key. It takes 30 seconds to get one — just sign up at evolink.ai/signup. Want me to walk you through it?"
+   - **If not set:** "To run the model, you'll need an EvoLink API key. Open https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image, create a key, then paste it here and I will set it for this session."
    - **If already set:** "You're all set! What would you like to do with Nanobanana 2 Lite Image Generation?"
 
 2. That's it. One question. The user is now in the flow.
@@ -56,7 +56,7 @@ Do NOT list features, show a menu, or dump instructions. Just ask one question t
 If the user hasn't provided an API key or set `EVOLINK_API_KEY`:
 
 - Tell them they need an EvoLink API Key
-- Guide them to register at https://evolink.ai and get a key from the dashboard
+- Guide them to open https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image and get a key from the dashboard
 - Once they provide a key, proceed to Step 2
 
 If the key is already set or provided, skip directly to Step 2.
@@ -117,7 +117,7 @@ EVOLINK_API_KEY=$EVOLINK_API_KEY {SKILL_DIR}/scripts/nanobanana-2-lite-image.sh 
 **All agents — critical rules:**
 - Once you see `TASK_SUBMITTED:` in the output, the task is **already queued on the server**. Do NOT run the script again — retrying wastes the user's API credits.
 - The script blocks until the task is ready (up to 5 minutes). Do NOT kill it prematurely.
-- If the script times out with `POLL_TIMEOUT`, the task may still be processing — tell the user to check https://evolink.ai/dashboard.
+- If the script times out with `POLL_TIMEOUT`, the task may still be processing — tell the user to check https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image.
 
 ## Script Usage
 
@@ -153,7 +153,7 @@ The script writes structured lines to stdout that you must parse and act on:
 | `POLL_TIMEOUT: task_id=<id> dashboard=<url>` | Polling exceeded 5 min | Tell user: "Your task may already be done — check <dashboard_url> (task: `<id>`)" |
 | `ERROR: ...` (stderr) | On failure | Surface the error message to the user |
 
-**Critical**: Once you see `TASK_SUBMITTED:`, the task is queued on the server. **Do NOT run the script again.** Retrying wastes the user's API credits. If the script times out locally, the task may still complete — tell the user to check their dashboard at https://evolink.ai/dashboard.
+**Critical**: Once you see `TASK_SUBMITTED:`, the task is queued on the server. **Do NOT run the script again.** Retrying wastes the user's API credits. If the script times out locally, the task may still complete — tell the user to check their dashboard at https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image.
 
 ## Error Handling
 
@@ -161,8 +161,8 @@ Provide friendly, actionable messages:
 
 | Error | What to tell the user |
 |-------|----------------------|
-| Invalid/missing key (401) | "Your API key doesn't seem to work. You can check it at https://evolink.ai/dashboard" |
-| Insufficient balance (402) | "Your account balance is low. You can add credits at https://evolink.ai/dashboard" |
+| Invalid/missing key (401) | "Your API key doesn't seem to work. You can check it at https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image" |
+| Insufficient balance (402) | "Your account balance is low. You can add credits at https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image" |
 | Rate limited (429) | "Too many requests — let's wait a moment and try again" |
 | Content blocked (400) | "This input was flagged by content moderation. Try adjusting it" |
 | Service unavailable (503) | "The service is temporarily busy. Let's try again in a minute" |

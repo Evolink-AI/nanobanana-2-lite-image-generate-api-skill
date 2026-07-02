@@ -1,6 +1,6 @@
 # GitHub Repo Action List
 
-Repo: `cheercheung/nanobanana-2-lite-image-generate-api-skill`
+Repo: `Evolink-AI/nanobanana-2-lite-image-generate-api-skill`
 Review date: 2026-07-01
 Review mode: `Review + Fix + Follow-up Check`
 
@@ -44,5 +44,5 @@ Review mode: `Review + Fix + Follow-up Check`
 
 - Blockers: None.
 - Out of scope: CI workflow is optional and not blocking public use.
-- Follow-up check: Re-run `gh api repos/cheercheung/nanobanana-2-lite-image-generate-api-skill/community/profile` after any future community file changes.
+- Follow-up check: Re-run `gh api repos/Evolink-AI/nanobanana-2-lite-image-generate-api-skill/community/profile` after any future community file changes.
 - Link copy issues: Fixed in README Documentation and Related Repositories sections.

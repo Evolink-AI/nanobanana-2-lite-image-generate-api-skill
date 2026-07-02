@@ -13,6 +13,11 @@ CREATE_RESPONSE=$(curl -sS --request POST \
   --url "https://api.evolink.ai/v1/images/generations" \
   --header "Authorization: Bearer ${EVOLINK_API_KEY}" \
   --header "Content-Type: application/json" \
+  --header "X-EvoLink-Source: skill" \
+  --header "X-EvoLink-Skill: nanobanana-2-lite-image" \
+  --header "X-EvoLink-Package: evolink-nanobanana-2-lite" \
+  --header "X-EvoLink-Campaign: nanobanana-2-lite-image" \
+  --header "X-EvoLink-Touchpoint: first_run" \
   --data "$PAYLOAD")
 
 TASK_ID=$(printf '%s' "$CREATE_RESPONSE" | jq -r '.id // empty')
@@ -24,7 +29,12 @@ fi
 for _ in $(seq 1 120); do
   TASK=$(curl -sS --request GET \
     --url "https://api.evolink.ai/v1/tasks/${TASK_ID}" \
-    --header "Authorization: Bearer ${EVOLINK_API_KEY}")
+    --header "Authorization: Bearer ${EVOLINK_API_KEY}" \
+    --header "X-EvoLink-Source: skill" \
+    --header "X-EvoLink-Skill: nanobanana-2-lite-image" \
+    --header "X-EvoLink-Package: evolink-nanobanana-2-lite" \
+    --header "X-EvoLink-Campaign: nanobanana-2-lite-image" \
+    --header "X-EvoLink-Touchpoint: first_run")
 
   STATUS=$(printf '%s' "$TASK" | jq -r '.status // empty')
   if [ "$STATUS" = "completed" ]; then

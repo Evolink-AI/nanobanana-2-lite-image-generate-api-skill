@@ -5,7 +5,7 @@ Review mode: `Review + Fix + Follow-up Check`
 
 ## 1. 总体判断
 
-- 仓库：`cheercheung/nanobanana-2-lite-image-generate-api-skill`
+- 仓库：`Evolink-AI/nanobanana-2-lite-image-generate-api-skill`
 - 类型：公开 API examples + npm installable agent skill repository
 - 当前成熟度：可公开展示、可安装、可维护
 - 一句话结论：GitHub front-door audit 通过；About、topics、README、Community Profile、SEO、npx 安装入口和维护文件都已经闭环。
@@ -98,10 +98,10 @@ Review mode: `Review + Fix + Follow-up Check`
 ## 6. 复检证据
 
 ```bash
-gh repo view cheercheung/nanobanana-2-lite-image-generate-api-skill --json name,description,homepageUrl,repositoryTopics,visibility,licenseInfo,defaultBranchRef,updatedAt,pushedAt,url
-gh api repos/cheercheung/nanobanana-2-lite-image-generate-api-skill/community/profile
+gh repo view Evolink-AI/nanobanana-2-lite-image-generate-api-skill --json name,description,homepageUrl,repositoryTopics,visibility,licenseInfo,defaultBranchRef,updatedAt,pushedAt,url
+gh api repos/Evolink-AI/nanobanana-2-lite-image-generate-api-skill/community/profile
 curl -I -L https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-lite-image-generate
-curl -I -L https://evolink.ai/signup
+curl -I -L 'https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image'
 npm view evolink-nanobanana-2-lite version dist-tags --json --registry=https://registry.npmjs.org/
 npx -y evolink-nanobanana-2-lite@latest --version
 ```

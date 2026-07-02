@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-lite-image-generate?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image-generate-api-skill">
+  <a href="https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-lite-image-generate?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image">
     <img src="assets/banner.jpg" alt="Nanobanana 2 Lite Image Generation API and agent skill banner" width="100%" />
   </a>
 </p>
@@ -13,8 +13,8 @@
 <p align="center">
   <a href="https://www.npmjs.com/package/evolink-nanobanana-2-lite"><img src="https://img.shields.io/npm/v/evolink-nanobanana-2-lite?color=cb3837&label=npm" alt="NPM version"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
-  <a href="https://github.com/cheercheung/nanobanana-2-lite-image-generate-api-skill/stargazers"><img src="https://img.shields.io/github/stars/cheercheung/nanobanana-2-lite-image-generate-api-skill?style=flat" alt="GitHub stars"></a>
-  <a href="https://github.com/cheercheung/nanobanana-2-lite-image-generate-api-skill/commits/main/"><img src="https://img.shields.io/github/last-commit/cheercheung/nanobanana-2-lite-image-generate-api-skill" alt="Last commit"></a>
+  <a href="https://github.com/Evolink-AI/nanobanana-2-lite-image-generate-api-skill/stargazers"><img src="https://img.shields.io/github/stars/Evolink-AI/nanobanana-2-lite-image-generate-api-skill?style=flat" alt="GitHub stars"></a>
+  <a href="https://github.com/Evolink-AI/nanobanana-2-lite-image-generate-api-skill/commits/main/"><img src="https://img.shields.io/github/last-commit/Evolink-AI/nanobanana-2-lite-image-generate-api-skill" alt="Last commit"></a>
 </p>
 
 <p align="center">
@@ -23,7 +23,7 @@
   <a href="#agent-auto-install">Agent Auto-Install</a> •
   <a href="#api-quick-start">API Quick Start</a> •
   <a href="#showcase">Showcase</a> •
-  <a href="https://evolink.ai/signup?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image-generate-api-skill">Get API Key</a>
+  <a href="https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image">Get API Key</a>
 </p>
 
 <p align="center">
@@ -86,7 +86,7 @@
 ### OpenClaw
 
 ```bash
-openclaw skills add https://github.com/cheercheung/nanobanana-2-lite-image-generate-api-skill
+openclaw skills add https://github.com/Evolink-AI/nanobanana-2-lite-image-generate-api-skill
 ```
 
 ### npm으로 설치(권장)
@@ -110,7 +110,7 @@ npx evolink-nanobanana-2-lite@latest "Create a short Nanobanana 2 Lite Image Gen
 ### 수동 설치
 
 ```bash
-git clone https://github.com/cheercheung/nanobanana-2-lite-image-generate-api-skill.git
+git clone https://github.com/Evolink-AI/nanobanana-2-lite-image-generate-api-skill.git
 cd nanobanana-2-lite-image-generate-api-skill
 npm install
 node bin/cli.js -y --path ~/.claude/skills
@@ -168,8 +168,8 @@ EVOLINK_API_KEY=your_key_here npx evolink-nanobanana-2-lite@latest "Create a blu
 
 ## API 키 받기
 
-1. [EvoLink 계정을 만들거나 엽니다](https://evolink.ai/signup?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image-generate-api-skill).
-2. [EvoLink 대시보드에서 API 키를 만듭니다](https://evolink.ai/dashboard?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image-generate-api-skill).
+1. [EvoLink 계정을 만들거나 엽니다](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image).
+2. [EvoLink 대시보드에서 API 키를 만듭니다](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image).
 3. 키를 `EVOLINK_API_KEY`로 내보냅니다.
 4. 실제 생성에 크레딧을 쓰기 전에 dry run을 실행합니다.
 
@@ -188,6 +188,11 @@ curl --request POST \
   --url https://api.evolink.ai/v1/images/generations \
   --header "Authorization: Bearer ${EVOLINK_API_KEY}" \
   --header "Content-Type: application/json" \
+  --header "X-EvoLink-Source: skill" \
+  --header "X-EvoLink-Skill: nanobanana-2-lite-image" \
+  --header "X-EvoLink-Package: evolink-nanobanana-2-lite" \
+  --header "X-EvoLink-Campaign: nanobanana-2-lite-image" \
+  --header "X-EvoLink-Touchpoint: first_run" \
   --data '{
   "model": "gemini-3.1-flash-lite-image",
   "prompt": "Create a short demo with Nanobanana 2 Lite Image Generation"
@@ -306,8 +311,8 @@ EvoLink는 작업 생성 응답에 사용량 정보를 반환합니다. 공식 �
 ## 커뮤니티
 
 - [Read the official EvoLink Nanobanana 2 Lite API docs](https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-lite-image-generate)
-- [View this repository on GitHub](https://github.com/cheercheung/nanobanana-2-lite-image-generate-api-skill)
-- [Open the EvoLink signup page](https://evolink.ai/signup?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image-generate-api-skill)
+- [View this repository on GitHub](https://github.com/Evolink-AI/nanobanana-2-lite-image-generate-api-skill)
+- [Open the EvoLink signup page](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image)
 
 ---
 

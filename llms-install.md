@@ -28,7 +28,11 @@ Check if `EVOLINK_API_KEY` is already set:
 echo $EVOLINK_API_KEY
 ```
 
-If empty, ask the user for their EvoLink API key. They can get one at https://evolink.ai/signup
+If empty, ask the user for their EvoLink API key. They can get one at:
+
+```text
+https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image
+```
 
 Once they provide it, set it for the current session:
 

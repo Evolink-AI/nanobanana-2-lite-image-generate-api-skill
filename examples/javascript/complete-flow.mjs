@@ -13,11 +13,33 @@ async function requestJson(url, options = {}) {
   return data;
 }
 
+function extractResult(task) {
+  for (const key of ["result_url", "url", "file_url", "output_url", "text", "result"]) {
+    if (task[key]) return task[key];
+  }
+  for (const key of ["results", "result_data"]) {
+    const value = task[key];
+    if (Array.isArray(value) && value.length > 0) {
+      const first = value[0];
+      return typeof first === "object" ? (first.url || first.text) : first;
+    }
+    if (value && typeof value === "object") {
+      return value.url || value.text;
+    }
+  }
+  return null;
+}
+
 const task = await requestJson("https://api.evolink.ai/v1/images/generations", {
   method: "POST",
   headers: {
     Authorization: `Bearer ${apiKey}`,
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "X-EvoLink-Source": "skill",
+    "X-EvoLink-Skill": "nanobanana-2-lite-image",
+    "X-EvoLink-Package": "evolink-nanobanana-2-lite",
+    "X-EvoLink-Campaign": "nanobanana-2-lite-image",
+    "X-EvoLink-Touchpoint": "first_run"
   },
   body: JSON.stringify({
   "model": "gemini-3.1-flash-lite-image",
@@ -31,24 +53,19 @@ if (!task.id) {
 
 for (let attempt = 0; attempt < 120; attempt += 1) {
   const current = await requestJson(`https://api.evolink.ai/v1/tasks/${task.id}`, {
-    headers: { Authorization: `Bearer ${apiKey}` }
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "X-EvoLink-Source": "skill",
+      "X-EvoLink-Skill": "nanobanana-2-lite-image",
+      "X-EvoLink-Package": "evolink-nanobanana-2-lite",
+      "X-EvoLink-Campaign": "nanobanana-2-lite-image",
+      "X-EvoLink-Touchpoint": "first_run"
+    }
   });
 
   if (current.status === "completed") {
     console.log(JSON.stringify(current, null, 2));
-    let result = current.result_url || current.url || current.file_url || current.output_url || current.text || current.result;
-    if (!result && Array.isArray(current.results) && current.results.length > 0) {
-      const first = current.results[0];
-      result = typeof first === "object" ? (first.url || first.text) : first;
-    }
-    if (!result && current.result_data) {
-      if (Array.isArray(current.result_data) && current.result_data.length > 0) {
-        const first = current.result_data[0];
-        result = typeof first === "object" ? (first.url || first.text) : first;
-      } else {
-        result = current.result_data.url || current.result_data.text;
-      }
-    }
+    const result = extractResult(current);
     if (result) {
       console.log(`RESULT=${result}`);
     }
