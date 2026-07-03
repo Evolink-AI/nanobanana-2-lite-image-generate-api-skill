@@ -168,10 +168,11 @@ EVOLINK_API_KEY=your_key_here npx evolink-nanobanana-2-lite@latest "Create a blu
 
 ## Obtener una clave API
 
-1. [Crea o abre tu cuenta de EvoLink](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image).
-2. [Crea una clave API en el panel de EvoLink](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image).
-3. Exporta la clave como `EVOLINK_API_KEY`.
-4. Ejecuta una prueba en seco antes de gastar créditos en una generación real.
+1. Abre [EvoLink API Keys](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image).
+2. Inicia sesión o crea una cuenta de EvoLink si la página lo solicita.
+3. Crea una nueva clave API.
+4. Exporta la clave como `EVOLINK_API_KEY`.
+5. Ejecuta una prueba en seco antes de gastar créditos en una generación real.
 
 ---
 
@@ -312,7 +313,7 @@ EvoLink devuelve detalles de uso en la respuesta de creación de tarea. El ejemp
 
 - [Read the official EvoLink Nanobanana 2 Lite API docs](https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-lite-image-generate)
 - [View this repository on GitHub](https://github.com/Evolink-AI/nanobanana-2-lite-image-generate-api-skill)
-- [Open the EvoLink signup page](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image)
+- [Abrir la página de claves API de EvoLink](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image)
 
 ---
 

@@ -168,10 +168,11 @@ EVOLINK_API_KEY=your_key_here npx evolink-nanobanana-2-lite@latest "Create a blu
 
 ## API anahtarı alma
 
-1. [EvoLink hesabınızı oluşturun veya açın](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image).
-2. [EvoLink dashboard içinde bir API anahtarı oluşturun](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image).
-3. Anahtarı `EVOLINK_API_KEY` olarak export edin.
-4. Gerçek üretimde kredi harcamadan önce dry run çalıştırın.
+1. [EvoLink API Keys](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image) sayfasını açın.
+2. Sayfa isterse EvoLink'e giriş yapın veya bir hesap oluşturun.
+3. Yeni bir API anahtarı oluşturun.
+4. Anahtarı `EVOLINK_API_KEY` olarak export edin.
+5. Gerçek üretimde kredi harcamadan önce dry run çalıştırın.
 
 ---
 
@@ -312,7 +313,7 @@ EvoLink, görev oluşturma yanıtında kullanım ayrıntılarını döndürür. 
 
 - [Read the official EvoLink Nanobanana 2 Lite API docs](https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-lite-image-generate)
 - [View this repository on GitHub](https://github.com/Evolink-AI/nanobanana-2-lite-image-generate-api-skill)
-- [Open the EvoLink signup page](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image)
+- [EvoLink API anahtarı sayfasını aç](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image)
 
 ---
 

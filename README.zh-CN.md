@@ -168,10 +168,11 @@ EVOLINK_API_KEY=your_key_here npx evolink-nanobanana-2-lite@latest "Create a blu
 
 ## 获取 API Key
 
-1. [创建或打开你的 EvoLink 账号](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image)。
-2. [在 EvoLink dashboard 创建 API key](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image)。
-3. 把 key 导出为 `EVOLINK_API_KEY`。
-4. 在花费 credits 做真实生成前，先执行 dry run。
+1. 打开 [EvoLink API Keys](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image)。
+2. 如果页面提示，先登录或创建 EvoLink 账号。
+3. 创建一个新的 API key。
+4. 把 key 导出为 `EVOLINK_API_KEY`。
+5. 在花费 credits 做真实生成前，先执行 dry run。
 
 ---
 
@@ -312,7 +313,7 @@ EvoLink 会在创建任务响应中返回 usage 信息。官方示例使用 `bil
 
 - [Read the official EvoLink Nanobanana 2 Lite API docs](https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-lite-image-generate)
 - [View this repository on GitHub](https://github.com/Evolink-AI/nanobanana-2-lite-image-generate-api-skill)
-- [Open the EvoLink signup page](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image)
+- [打开 EvoLink API key 页面](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image)
 
 ---
 

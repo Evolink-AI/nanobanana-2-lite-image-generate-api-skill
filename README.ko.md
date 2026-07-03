@@ -168,10 +168,11 @@ EVOLINK_API_KEY=your_key_here npx evolink-nanobanana-2-lite@latest "Create a blu
 
 ## API 키 받기
 
-1. [EvoLink 계정을 만들거나 엽니다](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image).
-2. [EvoLink 대시보드에서 API 키를 만듭니다](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image).
-3. 키를 `EVOLINK_API_KEY`로 내보냅니다.
-4. 실제 생성에 크레딧을 쓰기 전에 dry run을 실행합니다.
+1. [EvoLink API Keys](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image)를 엽니다.
+2. 페이지에서 요청하면 EvoLink에 로그인하거나 계정을 만듭니다.
+3. 새 API 키를 만듭니다.
+4. 키를 `EVOLINK_API_KEY`로 내보냅니다.
+5. 실제 생성에 크레딧을 쓰기 전에 dry run을 실행합니다.
 
 ---
 
@@ -312,7 +313,7 @@ EvoLink는 작업 생성 응답에 사용량 정보를 반환합니다. 공식 �
 
 - [Read the official EvoLink Nanobanana 2 Lite API docs](https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-lite-image-generate)
 - [View this repository on GitHub](https://github.com/Evolink-AI/nanobanana-2-lite-image-generate-api-skill)
-- [Open the EvoLink signup page](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image)
+- [EvoLink API 키 페이지 열기](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image)
 
 ---
 

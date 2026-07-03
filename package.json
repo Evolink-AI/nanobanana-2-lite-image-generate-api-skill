@@ -1,6 +1,6 @@
 {
   "name": "evolink-nanobanana-2-lite",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "EvoLink API examples and agent skill for Nanobanana 2 Lite Image Generation.",
   "bin": {
     "evolink-nanobanana-2-lite": "bin/cli.js"
