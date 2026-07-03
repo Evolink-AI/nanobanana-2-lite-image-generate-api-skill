@@ -133,7 +133,10 @@ Install the Nanobanana 2 Lite Image Generation skill by running:
 
 npx evolink-nanobanana-2-lite@latest -y --path ~/.claude/skills
 
-After installation, set EVOLINK_API_KEY, read ~/.claude/skills/nanobanana-2-lite-image/SKILL.md, then run one dry run before calling the real API.
+After installation, open this tracked key URL for the user: https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image
+Ask the user to sign in, create an API key, return to this agent chat, and paste the key.
+Set it as EVOLINK_API_KEY for this session, verify it with `curl --fail https://api.evolink.ai/v1/credits -H "Authorization: Bearer $EVOLINK_API_KEY"`, then read ~/.claude/skills/nanobanana-2-lite-image/SKILL.md.
+After verification succeeds, tell the user: "The skill is ready. You can ask: Use Nanobanana 2 Lite Image Generation to create a blue ceramic cup on a white table."
 ```
 
 ### Codex
@@ -143,7 +146,10 @@ Install the Nanobanana 2 Lite Image Generation skill by running:
 
 npx evolink-nanobanana-2-lite@latest -y --path ~/.codex/skills
 
-After installation, set EVOLINK_API_KEY, read ~/.codex/skills/nanobanana-2-lite-image/SKILL.md, then run one dry run before calling the real API.
+After installation, open this tracked key URL for the user: https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image
+Ask the user to sign in, create an API key, return to this agent chat, and paste the key.
+Set it as EVOLINK_API_KEY for this session, verify it with `curl --fail https://api.evolink.ai/v1/credits -H "Authorization: Bearer $EVOLINK_API_KEY"`, then read ~/.codex/skills/nanobanana-2-lite-image/SKILL.md.
+After verification succeeds, tell the user: "The skill is ready. You can ask: Use Nanobanana 2 Lite Image Generation to create a blue ceramic cup on a white table."
 ```
 
 ### OpenClaw
@@ -153,7 +159,10 @@ Install the Nanobanana 2 Lite Image Generation skill by running:
 
 npx evolink-nanobanana-2-lite@latest -y --path ~/.openclaw/skills
 
-After installation, set EVOLINK_API_KEY, read ~/.openclaw/skills/nanobanana-2-lite-image/SKILL.md, then run one dry run before calling the real API.
+After installation, open this tracked key URL for the user: https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image
+Ask the user to sign in, create an API key, return to this agent chat, and paste the key.
+Set it as EVOLINK_API_KEY for this session, verify it with `curl --fail https://api.evolink.ai/v1/credits -H "Authorization: Bearer $EVOLINK_API_KEY"`, then read ~/.openclaw/skills/nanobanana-2-lite-image/SKILL.md.
+After verification succeeds, tell the user: "The skill is ready. You can ask: Use Nanobanana 2 Lite Image Generation to create a blue ceramic cup on a white table."
 ```
 
 ### One-Liner

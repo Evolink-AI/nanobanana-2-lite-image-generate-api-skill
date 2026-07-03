@@ -20,7 +20,9 @@ Replace `{SKILLS_DIR}` with your skills directory:
 | Cursor | project `.cursor/skills` or `~/.cursor/skills` |
 | Other | ask the user where to install |
 
-## Step 2: Set API Key
+## Step 2: Get, Paste, And Verify API Key
+
+After installation, you must complete the key handoff before telling the user the skill is ready.
 
 Check if `EVOLINK_API_KEY` is already set:
 
@@ -28,16 +30,35 @@ Check if `EVOLINK_API_KEY` is already set:
 echo $EVOLINK_API_KEY
 ```
 
-If empty, ask the user for their EvoLink API key. They can get one at:
+If empty or invalid:
+
+1. Open this tracked EvoLink key page for the user if your agent environment can open URLs. If not, show it as a clickable link:
 
 ```text
 https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image
 ```
 
-Once they provide it, set it for the current session:
+2. Tell the user to sign in, create an API key, return to the agent chat, and paste the key.
+3. Set the pasted key for the current session:
 
 ```bash
 export EVOLINK_API_KEY=their_key_here
+```
+
+4. Verify the key with the credits endpoint. This does not create an image task and does not spend generation credits:
+
+```bash
+curl --silent --show-error --fail \
+  https://api.evolink.ai/v1/credits \
+  -H "Authorization: Bearer $EVOLINK_API_KEY" >/dev/null
+```
+
+If verification fails, ask the user to check the key page and paste a fresh key. Do not proceed to first use until verification succeeds or the user explicitly chooses to skip.
+
+5. After verification succeeds, tell the user:
+
+```text
+The skill is installed and your EvoLink API key is verified. You can now ask: "Use Nanobanana 2 Lite Image Generation to create a blue ceramic cup on a white table."
 ```
 
 ## Step 3: Load the Skill Definition
@@ -72,7 +93,7 @@ If you see a JSON payload with `"model": "gemini-3.1-flash-lite-image"`, the ins
 EVOLINK_API_KEY=their_key npx evolink-nanobanana-2-lite@latest -y --path {SKILLS_DIR}
 ```
 
-This installs the skill AND verifies the API key in one step.
+This installs the skill and verifies the API key in one step. It does not create an image task.
 
 ## Available Commands
 

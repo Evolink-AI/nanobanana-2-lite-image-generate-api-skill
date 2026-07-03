@@ -34,11 +34,12 @@ For example, if this SKILL.md is at `~/.claude/skills/nanobanana-2-lite-image/SK
 
 When this skill is first loaded, proactively greet the user and start the setup:
 
-1. Check if `EVOLINK_API_KEY` is set (run: `echo $EVOLINK_API_KEY`)
-   - **If not set:** "To run the model, you'll need an EvoLink API key. Open https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image, create a key, then paste it here and I will set it for this session."
-   - **If already set:** "You're all set! What would you like to do with Nanobanana 2 Lite Image Generation?"
+1. Check if `EVOLINK_API_KEY` is set (run: `echo $EVOLINK_API_KEY`).
+   - **If not set:** open or show `https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image`, then say: "To run the model, you'll need an EvoLink API key. Sign in, create a key, paste it here, and I will verify it before first use."
+   - **If already set:** verify it with `curl --silent --show-error --fail https://api.evolink.ai/v1/credits -H "Authorization: Bearer $EVOLINK_API_KEY" >/dev/null`. This does not create an image task or spend generation credits.
+   - **After a pasted key verifies:** say: "Your EvoLink API key is verified. You can now ask: Use Nanobanana 2 Lite Image Generation to create a blue ceramic cup on a white table."
 
-2. That's it. One question. The user is now in the flow.
+2. That's it. One setup flow. Do not claim the skill is ready until the key is verified or the user explicitly chooses to skip verification.
 
 Do NOT list features, show a menu, or dump instructions. Just ask one question to move forward.
 
@@ -56,8 +57,9 @@ Do NOT list features, show a menu, or dump instructions. Just ask one question t
 If the user hasn't provided an API key or set `EVOLINK_API_KEY`:
 
 - Tell them they need an EvoLink API Key
-- Guide them to open https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image and get a key from the dashboard
-- Once they provide a key, proceed to Step 2
+- Open or show https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image and tell them to sign in, create a key, return, and paste it into the agent chat
+- Once they provide a key, set it for the current session and verify it with the credits endpoint before proceeding
+- After verification succeeds, tell them how to use the skill with one concrete example
 
 If the key is already set or provided, skip directly to Step 2.
 

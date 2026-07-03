@@ -25,6 +25,7 @@ const PKG_JSON = JSON.parse(fs.readFileSync(path.join(PKG_ROOT, 'package.json'),
 const PKG_VERSION = PKG_JSON.version;
 const PKG_NAME = PKG_JSON.name;
 const INSTALL_KEY_URL = 'https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image';
+const USAGE_EXAMPLE = 'Use Nanobanana 2 Lite Image Generation to create a blue ceramic cup on a white table';
 
 // ── Banner ────────────────────────────────────────────────────────────────────
 function printBanner() {
@@ -70,7 +71,7 @@ function printHelp() {
   console.log('  1. Detects your skills directory (OpenClaw / Claude Code / OpenCode)');
   console.log('  2. Copies skill files (SKILL.md, scripts/, references/)');
   console.log('  3. Checks required dependencies (jq, curl)');
-  console.log('  4. Guides you through API key setup (skipped in -y mode)');
+  console.log('  4. Guides API key setup with a tracked EvoLink key URL');
   console.log('');
   console.log(bold('Environment:'));
   console.log('  EVOLINK_API_KEY   ' + dim(`Your EvoLink API key (get one at ${INSTALL_KEY_URL})`));
@@ -172,6 +173,7 @@ function openUrl(url) {
 
 function maybeOpenKeyUrl(opts = {}) {
   console.log(bold('  → Get your EvoLink API key: ') + cyan(INSTALL_KEY_URL));
+  console.log(`EVOLINK_KEY_URL=${INSTALL_KEY_URL}`);
   if (opts.noOpen) {
     console.log(dim('    --no-open set: not opening a browser.'));
     return;
@@ -187,6 +189,27 @@ function maybeOpenKeyUrl(opts = {}) {
     console.log(yellow(`  ⚠  Could not open browser: ${opened.reason || 'unknown error'}`));
     console.log(dim('    Copy and open the URL above.'));
   }
+}
+
+function printAgentKeyHandoff(reason = 'missing_key') {
+  console.log('');
+  console.log(bold(yellow('Agent next action: API key required')));
+  console.log(`AGENT_NEXT_ACTION=${reason}`);
+  console.log(`EVOLINK_KEY_URL=${INSTALL_KEY_URL}`);
+  console.log('  1. Open the EvoLink key page above for the user, or show it as a clickable link.');
+  console.log('  2. Ask the user to sign in, create an API key, and paste the key back into this agent chat.');
+  console.log('  3. Validate the pasted key with the EvoLink credits endpoint. This validation does not create an image task or spend generation credits.');
+  console.log('  4. After validation succeeds, tell the user they can use the skill, for example:');
+  console.log(`     "${USAGE_EXAMPLE}"`);
+}
+
+function printReadyUsage() {
+  console.log('');
+  console.log(bold(green('Ready to use this skill.')));
+  console.log('  Ask your agent:');
+  console.log(`    "${USAGE_EXAMPLE}"`);
+  console.log('  Or run directly:');
+  console.log(`    EVOLINK_API_KEY=your_key npx ${PKG_NAME}@latest "Create a blue ceramic cup on a white table"`);
 }
 
 function copyDir(src, dest) {
@@ -488,12 +511,14 @@ async function setupApiKey(rl, opts = {}) {
     const check = verifyApiKey(existing);
     if (check.valid) {
       console.log(green('  ✓ EVOLINK_API_KEY is valid: ') + masked);
+      return { status: 'valid_existing' };
     } else {
       console.log(yellow(`  ⚠  EVOLINK_API_KEY is set but invalid: ${check.reason}`));
       console.log(dim('    Key: ' + masked));
       maybeOpenKeyUrl(opts);
+      printAgentKeyHandoff('invalid_existing_key');
     }
-    return;
+    return { status: 'invalid_existing' };
   }
 
   console.log(yellow('  ⚠  EVOLINK_API_KEY is not set.'));
@@ -508,7 +533,8 @@ async function setupApiKey(rl, opts = {}) {
   if (!key) {
     console.log(yellow('  → Skipped. Set it later with:'));
     console.log(dim('    export EVOLINK_API_KEY=your_key_here'));
-    return;
+    printAgentKeyHandoff('user_skipped_key_paste');
+    return { status: 'skipped' };
   }
 
   // Verify the key before saving
@@ -519,7 +545,8 @@ async function setupApiKey(rl, opts = {}) {
     const retry = await ask(rl, yellow('  Save it anyway? (y/N): '));
     if (!retry.trim().toLowerCase().startsWith('y')) {
       console.log(yellow('  → Skipped. Check your key and try again.'));
-      return;
+      printAgentKeyHandoff('invalid_pasted_key');
+      return { status: 'invalid_pasted' };
     }
   } else {
     console.log(green('  ✓ API key is valid!'));
@@ -551,10 +578,12 @@ async function setupApiKey(rl, opts = {}) {
   } else {
     console.log(dim(`  To activate later, run: ${exportLine}`));
   }
+  printReadyUsage();
+  return { status: check.valid ? 'valid_pasted' : 'saved_unverified' };
 }
 
 // ── Success summary ───────────────────────────────────────────────────────────
-function printSuccess(installPath) {
+function printSuccess(installPath, keyStatus = 'unknown') {
   console.log('');
   console.log(bold(green('╔══════════════════════════════════════════════════════════╗')));
   console.log(bold(green('║') + '                                                          ' + bold(green('║'))));
@@ -566,12 +595,16 @@ function printSuccess(installPath) {
   console.log('  ' + cyan(installPath));
   console.log('');
   console.log(bold('Next steps:'));
-  console.log('  1. ' + dim('Ensure EVOLINK_API_KEY is set in your environment'));
-  console.log('     ' + dim('export EVOLINK_API_KEY=your_key  (or add to .zshrc/.bashrc)'));
+  if (keyStatus === 'valid_existing' || keyStatus === 'valid_pasted') {
+    console.log('  1. ' + dim('EVOLINK_API_KEY has been verified for this setup.'));
+  } else {
+    console.log('  1. ' + dim('Finish API key setup with the agent handoff above.'));
+    console.log('     ' + dim(`Open ${INSTALL_KEY_URL}, paste the key back, then verify it before first use.`));
+  }
   console.log('  2. ' + dim('Open your agent and load the skill:'));
   console.log('     ' + cyan(SKILL_SLUG));
   console.log('  3. ' + dim('Get started! Example:'));
-  console.log('     ' + dim('"Use Nanobanana 2 Lite Image Generation to create a test output"'));
+  console.log('     ' + dim(`"${USAGE_EXAMPLE}"`));
   console.log('');
   console.log(dim('  Docs:      https://github.com/Evolink-AI/nanobanana-2-lite-image-generate-api-skill'));
   console.log(dim(`  API keys:  ${INSTALL_KEY_URL}`));
@@ -655,23 +688,29 @@ async function main() {
       checkDependencies();
 
       console.log(bold('\n[4/4] EvoLink API key setup...'));
+      let keyStatus = 'missing_key';
       if (process.env.EVOLINK_API_KEY) {
         const masked = process.env.EVOLINK_API_KEY.slice(0, 6) + '••••••••••••••••';
         console.log(dim('  Verifying API key...'));
         const check = verifyApiKey(process.env.EVOLINK_API_KEY);
         if (check.valid) {
+          keyStatus = 'valid_existing';
           console.log(green('  ✓ EVOLINK_API_KEY is valid: ') + masked);
+          printReadyUsage();
         } else {
+          keyStatus = 'invalid_existing';
           console.log(yellow(`  ⚠  EVOLINK_API_KEY is set but invalid: ${check.reason}`));
           console.log(dim('    Key: ' + masked));
+          printAgentKeyHandoff('invalid_existing_key');
         }
       } else {
         console.log(yellow('  ⚠  EVOLINK_API_KEY is not set.'));
         maybeOpenKeyUrl(opts);
         console.log(dim('    Then run:   export EVOLINK_API_KEY=your_key'));
+        printAgentKeyHandoff('missing_key');
       }
 
-      printSuccess(installPath);
+      printSuccess(installPath, keyStatus);
     } catch (err) {
       console.error(red('\n  ✗ Installation failed: ') + err.message);
       process.exit(1);
@@ -695,8 +734,8 @@ async function main() {
     const skillsDir = await detectSkillsDir(rl, opts);
     const installPath = await copySkillFiles(skillsDir, rl, opts);
     checkDependencies();
-    await setupApiKey(rl, opts);
-    printSuccess(installPath);
+    const keyResult = await setupApiKey(rl, opts);
+    printSuccess(installPath, keyResult.status);
   } catch (err) {
     console.error(red('\n  ✗ Installation failed: ') + err.message);
     process.exit(1);
