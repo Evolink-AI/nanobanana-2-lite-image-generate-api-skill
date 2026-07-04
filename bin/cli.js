@@ -178,10 +178,6 @@ function maybeOpenKeyUrl(opts = {}) {
     console.log(dim('    --no-open set: not opening a browser.'));
     return;
   }
-  if (opts.silent) {
-    console.log(dim('    Silent mode: not opening a browser.'));
-    return;
-  }
   const opened = openUrl(INSTALL_KEY_URL);
   if (opened.ok) {
     console.log(green('  ✓ Opened the API key page in your browser.'));
@@ -196,10 +192,12 @@ function printAgentKeyHandoff(reason = 'missing_key') {
   console.log(bold(yellow('Agent next action: API key required')));
   console.log(`AGENT_NEXT_ACTION=${reason}`);
   console.log(`EVOLINK_KEY_URL=${INSTALL_KEY_URL}`);
+  console.log('ENV_VAR_EXPORT=export EVOLINK_API_KEY=<paste_the_user_key_here>');
   console.log('  1. Open the EvoLink key page above for the user, or show it as a clickable link.');
   console.log('  2. Ask the user to sign in, create an API key, and paste the key back into this agent chat.');
-  console.log('  3. Validate the pasted key with the EvoLink credits endpoint. This validation does not create an image task or spend generation credits.');
-  console.log('  4. After validation succeeds, tell the user they can use the skill, for example:');
+  console.log('  3. Validate the pasted key with the EvoLink credits endpoint, a non-generating endpoint. This validation does not create a generation task or spend generation credits.');
+  console.log('  4. After validation succeeds, tell the user: The skill is ready.');
+  console.log('     Example:');
   console.log(`     "${USAGE_EXAMPLE}"`);
 }
 

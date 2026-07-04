@@ -3,4 +3,5 @@
 .codex/
 examples/golden-runs/
 reports/
+.npm-stage/
 README.*.md

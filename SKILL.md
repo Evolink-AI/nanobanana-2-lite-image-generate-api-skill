@@ -36,8 +36,8 @@ When this skill is first loaded, proactively greet the user and start the setup:
 
 1. Check if `EVOLINK_API_KEY` is set (run: `echo $EVOLINK_API_KEY`).
    - **If not set:** open or show `https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image`, then say: "To run the model, you'll need an EvoLink API key. Sign in, create a key, paste it here, and I will verify it before first use."
-   - **If already set:** verify it with `curl --silent --show-error --fail https://api.evolink.ai/v1/credits -H "Authorization: Bearer $EVOLINK_API_KEY" >/dev/null`. This does not create an image task or spend generation credits.
-   - **After a pasted key verifies:** say: "Your EvoLink API key is verified. You can now ask: Use Nanobanana 2 Lite Image Generation to create a blue ceramic cup on a white table."
+   - **If already set:** verify it with `curl --silent --show-error --fail https://api.evolink.ai/v1/credits -H "Authorization: Bearer $EVOLINK_API_KEY" >/dev/null`. The credits endpoint is a non-generating endpoint; it does not create a generation task or spend generation credits.
+   - **After a pasted key verifies:** set `ENV_VAR_EXPORT=export EVOLINK_API_KEY=<verified_key>` for the current session, then say: "The skill is ready. Your EvoLink API key is verified. You can now ask: Use Nanobanana 2 Lite Image Generation to create a blue ceramic cup on a white table."
 
 2. That's it. One setup flow. Do not claim the skill is ready until the key is verified or the user explicitly chooses to skip verification.
 
@@ -58,7 +58,8 @@ If the user hasn't provided an API key or set `EVOLINK_API_KEY`:
 
 - Tell them they need an EvoLink API Key
 - Open or show https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image and tell them to sign in, create a key, return, and paste it into the agent chat
-- Once they provide a key, set it for the current session and verify it with the credits endpoint before proceeding
+- Once they provide a key, set `ENV_VAR_EXPORT=export EVOLINK_API_KEY=<verified_key>` for the current session and verify it with the credits endpoint before proceeding
+- The credits endpoint is a non-generating endpoint; it does not create a generation task
 - After verification succeeds, tell them how to use the skill with one concrete example
 
 If the key is already set or provided, skip directly to Step 2.
@@ -76,10 +77,12 @@ Check what the user has already provided and **only ask about what's missing**:
 
 | Parameter | What to tell the user | Required? |
 |-----------|----------------------|-----------|
-| **TBD** | TBD | Yes |
-| **TBD** | TBD | Yes |
-| **TBD** | TBD | Optional |
-| **TBD** | TBD | Optional |
+| `prompt` | Describe the image to generate or the edit to apply. | Yes |
+| `model` | Use `gemini-3.1-flash-lite-image`. Do not ask the user to choose another model unless they explicitly request it and docs confirm support. | Yes |
+| `size` | Optional aspect ratio such as `auto`, `1:1`, `16:9`, `9:16`, `4:3`, or `3:4`; default is `auto`. | Optional |
+| `quality` | Optional image quality; default supported value is `1K`. | Optional |
+| `image_urls` | Optional reference image URLs for image-to-image or editing, up to 14 images. | Optional |
+| `callback_url` | Optional HTTPS callback URL. If omitted, poll `/v1/tasks/{task_id}` until completion. | Optional |
 
 **Smart gathering rules — STRICT:**
 - **Ask ALL missing parameters in ONE single message.** Never split into multiple rounds of questions.
@@ -103,7 +106,7 @@ Once all required information is confirmed:
 
 ```
 # Step 1: Run in background (resolves SKILL_DIR first)
-Bash(command: "{SKILL_DIR}/scripts/nanobanana-2-lite-image.sh \"input\" --dry-run true", run_in_background: true, timeout: 300000)
+Bash(command: "{SKILL_DIR}/scripts/nanobanana-2-lite-image.sh \"input\"", run_in_background: true, timeout: 300000)
 
 # Step 2: Wait ~30 seconds, then read the background task output file to check for RESULT_URL= or STATUS_UPDATE lines
 
@@ -113,7 +116,7 @@ Bash(command: "{SKILL_DIR}/scripts/nanobanana-2-lite-image.sh \"input\" --dry-ru
 **OpenClaw / OpenCode / Cursor** — run the script as a blocking shell command (the script handles its own polling internally, typically completes in 2-10 minutes):
 
 ```bash
-EVOLINK_API_KEY=$EVOLINK_API_KEY {SKILL_DIR}/scripts/nanobanana-2-lite-image.sh "input" --dry-run true
+EVOLINK_API_KEY=$EVOLINK_API_KEY {SKILL_DIR}/scripts/nanobanana-2-lite-image.sh "input"
 ```
 
 **All agents — critical rules:**
@@ -131,12 +134,6 @@ export EVOLINK_API_KEY=your_key_here
 
 # Basic
 {SKILL_DIR}/scripts/nanobanana-2-lite-image.sh "Create a short Nanobanana 2 Lite Image Generation demo"
-
-# With options
-{SKILL_DIR}/scripts/nanobanana-2-lite-image.sh "Test prompt" --dry-run true --timeout TBD
-
-# Advanced
-{SKILL_DIR}/scripts/nanobanana-2-lite-image.sh "Dry run" --help TBD
 
 # Dry run (preview payload without calling API)
 {SKILL_DIR}/scripts/nanobanana-2-lite-image.sh "Test" --dry-run

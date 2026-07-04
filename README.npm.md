@@ -1,11 +1,11 @@
-# Nanobanana 2 Lite Image Generation Agent Skill and API Guide
+# Nanobanana 2 Lite Image Generation NPM Package
 
 <p align="center">
-  <strong>Install the EvoLink agent skill first, then run Nanobanana 2 Lite Image Generation through the API.</strong>
+  <strong>Install the EvoLink agent skill from npm, then run Nanobanana 2 Lite Image Generation through the API.</strong>
 </p>
 
 <p align="center">
-  <a href="https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-lite-image-generate?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image">
+  <a href="https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-lite-image-generate?utm_source=npm&utm_medium=package&utm_campaign=nanobanana-2-lite-image">
     <img src="assets/banner.jpg" alt="Nanobanana 2 Lite Image Generation API and agent skill banner" width="100%" />
   </a>
 </p>
@@ -23,28 +23,12 @@
   <a href="#agent-auto-install">Agent Auto-Install</a> •
   <a href="#api-quick-start">API Quick Start</a> •
   <a href="#showcase">Showcase</a> •
-  <a href="https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image">Get API Key</a>
+  <a href="https://evolink.ai/dashboard/keys?utm_source=npm&utm_medium=package&utm_campaign=nanobanana-2-lite-image">Get API Key</a>
 </p>
 
-<p align="center">
-  <a href="README.md"><img src="https://img.shields.io/badge/🇺🇸_English-Read-111111" alt="English"></a>
-  <a href="README.es.md"><img src="https://img.shields.io/badge/🇪🇸_Español-Ver-ffb703" alt="Español"></a>
-  <a href="README.pt.md"><img src="https://img.shields.io/badge/🇵🇹_Português-Ver-2a9d8f" alt="Português"></a>
-  <a href="README.ja.md"><img src="https://img.shields.io/badge/🇯🇵_日本語-表示-52b788" alt="日本語"></a>
-  <a href="README.ko.md"><img src="https://img.shields.io/badge/🇰🇷_한국어-보기-4ea8de" alt="한국어"></a>
-  <a href="README.de.md"><img src="https://img.shields.io/badge/🇩🇪_Deutsch-Ansehen-f4a261" alt="Deutsch"></a>
-  <a href="README.fr.md"><img src="https://img.shields.io/badge/🇫🇷_Français-Voir-e76f51" alt="Français"></a>
-  <a href="README.tr.md"><img src="https://img.shields.io/badge/🇹🇷_Türkçe-Görüntüle-d62828" alt="Türkçe"></a>
-  <a href="README.zh-TW.md"><img src="https://img.shields.io/badge/🇹🇼_繁體中文-查看-8338ec" alt="繁體中文"></a>
-  <a href="README.zh-CN.md"><img src="https://img.shields.io/badge/🇨🇳_简体中文-查看-ef476f" alt="简体中文"></a>
-  <a href="README.ru.md"><img src="https://img.shields.io/badge/🇷🇺_Русский-Смотреть-577590" alt="Русский"></a>
-</p>
+> **NPM package surface:** this README is rendered on npm from `README.npm.md`. Every API-key link on this page uses npm/package attribution. Installer runtime output still prints its own installer attribution URL after the package runs.
 
----
-
-> **GitHub surface:** this README is the GitHub repository front door. API-key links use `utm_source=github&utm_medium=readme`; agent install handoff blocks intentionally use `utm_source=skill&utm_medium=install` because the copied prompt runs inside an installer/agent setup flow. The npm package page uses a separate [README.npm.md](README.npm.md).
-
-> **AI Agent?** Start here: copy an Agent Auto-Install prompt below, install the skill with `npx`, then read [**llms-install.md**](llms-install.md) for agent-specific setup.
+> **AI Agent?** Start here: install the package with `npx`, complete API-key setup, then load the installed `SKILL.md`.
 
 ---
 
@@ -71,7 +55,7 @@
 
 ## Agent Skill First
 
-This repository is designed for agents and developers who want a one-line install path. The primary workflow is to install the skill with `npx`, let the agent read `SKILL.md`, and only then call the EvoLink API.
+This npm package is designed for agents and developers who want a one-line install path. The primary workflow is to install the skill with `npx`, let the agent read the installed `SKILL.md`, and only then call the EvoLink API.
 
 | Skill slug | NPM package | Model ID | Primary env var |
 |---|---|---|---|
@@ -83,13 +67,7 @@ This repository is designed for agents and developers who want a one-line instal
 
 ## Installation
 
-Install into your agent skills directory. Use npm for Claude Code, Codex, OpenClaw, and Hermes; OpenClaw users can also install directly from GitHub.
-
-### OpenClaw
-
-```bash
-openclaw skills add https://github.com/Evolink-AI/nanobanana-2-lite-image-generate-api-skill
-```
+Install into your agent skills directory. Use npm for Claude Code, Codex, OpenClaw, Hermes, and other agent runtimes that can read skill files.
 
 ### Install via npm (Recommended)
 
@@ -122,7 +100,7 @@ node bin/cli.js -y --path ~/.claude/skills
 
 Use the copy-paste prompts in the next section when an agent needs to install the skill by itself.
 
-The install prompts below use the installer-runtime key URL. That is intentional for GitHub agent handoff: the user is copying a setup instruction that will run inside an agent/installer flow.
+The prompt blocks below use npm/package API-key attribution because the user is reading them on the npm package page. The installed CLI will print the installer-runtime key URL during setup.
 
 ---
 
@@ -137,7 +115,7 @@ Install the Nanobanana 2 Lite Image Generation skill by running:
 
 npx evolink-nanobanana-2-lite@latest -y --path ~/.claude/skills
 
-After installation, open this tracked key URL for the user: https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image
+After installation, open this tracked key URL for the user: https://evolink.ai/dashboard/keys?utm_source=npm&utm_medium=package&utm_campaign=nanobanana-2-lite-image
 Ask the user to sign in, create an API key, return to this agent chat, and paste the key.
 Set it as EVOLINK_API_KEY for this session, verify it with `curl --fail https://api.evolink.ai/v1/credits -H "Authorization: Bearer $EVOLINK_API_KEY"`, then read ~/.claude/skills/nanobanana-2-lite-image/SKILL.md.
 After verification succeeds, tell the user: "The skill is ready. You can ask: Use Nanobanana 2 Lite Image Generation to create a blue ceramic cup on a white table."
@@ -150,7 +128,7 @@ Install the Nanobanana 2 Lite Image Generation skill by running:
 
 npx evolink-nanobanana-2-lite@latest -y --path ~/.codex/skills
 
-After installation, open this tracked key URL for the user: https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image
+After installation, open this tracked key URL for the user: https://evolink.ai/dashboard/keys?utm_source=npm&utm_medium=package&utm_campaign=nanobanana-2-lite-image
 Ask the user to sign in, create an API key, return to this agent chat, and paste the key.
 Set it as EVOLINK_API_KEY for this session, verify it with `curl --fail https://api.evolink.ai/v1/credits -H "Authorization: Bearer $EVOLINK_API_KEY"`, then read ~/.codex/skills/nanobanana-2-lite-image/SKILL.md.
 After verification succeeds, tell the user: "The skill is ready. You can ask: Use Nanobanana 2 Lite Image Generation to create a blue ceramic cup on a white table."
@@ -163,7 +141,7 @@ Install the Nanobanana 2 Lite Image Generation skill by running:
 
 npx evolink-nanobanana-2-lite@latest -y --path ~/.openclaw/skills
 
-After installation, open this tracked key URL for the user: https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image
+After installation, open this tracked key URL for the user: https://evolink.ai/dashboard/keys?utm_source=npm&utm_medium=package&utm_campaign=nanobanana-2-lite-image
 Ask the user to sign in, create an API key, return to this agent chat, and paste the key.
 Set it as EVOLINK_API_KEY for this session, verify it with `curl --fail https://api.evolink.ai/v1/credits -H "Authorization: Bearer $EVOLINK_API_KEY"`, then read ~/.openclaw/skills/nanobanana-2-lite-image/SKILL.md.
 After verification succeeds, tell the user: "The skill is ready. You can ask: Use Nanobanana 2 Lite Image Generation to create a blue ceramic cup on a white table."
@@ -181,7 +159,7 @@ EVOLINK_API_KEY=your_key_here npx evolink-nanobanana-2-lite@latest "Create a blu
 
 ## Getting an API Key
 
-1. Open [EvoLink API Keys](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image).
+1. Open [EvoLink API Keys](https://evolink.ai/dashboard/keys?utm_source=npm&utm_medium=package&utm_campaign=nanobanana-2-lite-image).
 2. Sign in or create an EvoLink account if prompted on that page.
 3. Create a new API key.
 4. Export the key as `EVOLINK_API_KEY`.
@@ -326,7 +304,7 @@ EvoLink returns usage details in the task creation response. The official exampl
 
 - [Read the official EvoLink Nanobanana 2 Lite API docs](https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-lite-image-generate)
 - [View this repository on GitHub](https://github.com/Evolink-AI/nanobanana-2-lite-image-generate-api-skill)
-- [Open the EvoLink API key page](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=nanobanana-2-lite-image)
+- [Open the EvoLink API key page](https://evolink.ai/dashboard/keys?utm_source=npm&utm_medium=package&utm_campaign=nanobanana-2-lite-image)
 
 ---
 

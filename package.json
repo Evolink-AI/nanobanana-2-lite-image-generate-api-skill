@@ -3,6 +3,10 @@
   "version": "1.0.7",
   "description": "EvoLink API examples and agent skill for Nanobanana 2 Lite Image Generation.",
   "readmeFilename": "README.md",
+  "scripts": {
+    "check:surfaces": "node scripts/check-release-surfaces.js",
+    "pack:staged": "bash scripts/publish-npm.sh --dry-run"
+  },
   "bin": {
     "evolink-nanobanana-2-lite": "bin/cli.js"
   },
@@ -11,6 +15,7 @@
     "SKILL.md",
     "llms-install.md",
     "_meta.json",
+    "docs/",
     "scripts/",
     "references/",
     "examples/",

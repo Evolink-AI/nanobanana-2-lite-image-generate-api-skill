@@ -47,6 +47,14 @@ export EVOLINK_API_KEY=their_key_here
 
 4. Verify the key with the credits endpoint. This does not create an image task and does not spend generation credits:
 
+Machine-readable handoff marker:
+
+```text
+ENV_VAR_EXPORT=export EVOLINK_API_KEY=their_key_here
+```
+
+Use the credits endpoint as a non-generating endpoint. It does not create a generation task.
+
 ```bash
 curl --silent --show-error --fail \
   https://api.evolink.ai/v1/credits \
@@ -58,7 +66,7 @@ If verification fails, ask the user to check the key page and paste a fresh key.
 5. After verification succeeds, tell the user:
 
 ```text
-The skill is installed and your EvoLink API key is verified. You can now ask: "Use Nanobanana 2 Lite Image Generation to create a blue ceramic cup on a white table."
+The skill is ready. Your EvoLink API key is verified. You can now ask: "Use Nanobanana 2 Lite Image Generation to create a blue ceramic cup on a white table."
 ```
 
 ## Step 3: Load the Skill Definition
