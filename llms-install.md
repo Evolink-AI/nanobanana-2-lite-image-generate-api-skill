@@ -4,7 +4,13 @@ You are an AI agent. Follow these steps to install the Nanobanana 2 Lite Image G
 
 ## Step 1: Install
 
-Run this command (silent mode, no user interaction needed):
+Run this primary Agent install command:
+
+```bash
+npx skills add Evolink-AI/nanobanana-2-lite-image-generate-api-skill
+```
+
+If `npx skills` is unavailable, use this fallback command (silent mode, no user interaction needed):
 
 ```bash
 npx evolink-nanobanana-2-lite@latest -y --path {SKILLS_DIR}
@@ -98,17 +104,18 @@ If you see a JSON payload with `"model": "gemini-3.1-flash-lite-image"`, the ins
 ## One-Liner (If User Provides API Key Upfront)
 
 ```bash
-EVOLINK_API_KEY=their_key npx evolink-nanobanana-2-lite@latest -y --path {SKILLS_DIR}
+EVOLINK_API_KEY=their_key npx skills add Evolink-AI/nanobanana-2-lite-image-generate-api-skill
 ```
 
-This installs the skill and verifies the API key in one step. It does not create an image task.
+This installs the skill and starts the verified key setup flow. It does not create an image task. If `npx skills` is unavailable, use `EVOLINK_API_KEY=their_key npx evolink-nanobanana-2-lite@latest -y --path {SKILLS_DIR}` as the fallback.
 
 ## Available Commands
 
 | Command | Purpose |
 |---------|---------|
+| `npx skills add Evolink-AI/nanobanana-2-lite-image-generate-api-skill` | Preferred Agent install path |
 | `npx evolink-nanobanana-2-lite --llms` | Print this installation guide |
 | `npx evolink-nanobanana-2-lite --skill` | Print the SKILL.md (skill definition) |
-| `npx evolink-nanobanana-2-lite -y --path <dir>` | Silent install to a directory |
+| `npx evolink-nanobanana-2-lite -y --path <dir>` | Fallback install to a directory |
 | `npx evolink-nanobanana-2-lite --help` | Show all options |
 | `npx evolink-nanobanana-2-lite --version` | Show version |

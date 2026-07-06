@@ -18,7 +18,7 @@ Purpose:
 - Explain the repository and model/API.
 - Preserve multilingual README links.
 - Route developers to docs, examples, and GitHub source.
-- Let agents copy an install prompt from GitHub.
+- Let agents copy a primary `npx skills add Evolink-AI/nanobanana-2-lite-image-generate-api-skill` install prompt from GitHub.
 
 ## NPM Package README Surface
 
@@ -39,6 +39,8 @@ Disallowed on this surface:
 Purpose:
 
 - Explain the npm package and one-line install path.
+- Show `npx skills add Evolink-AI/nanobanana-2-lite-image-generate-api-skill` as the primary Agent install CTA.
+- Keep `npx evolink-nanobanana-2-lite@latest -y --path <skills-dir>` as fallback/direct CLI, not the primary Agent CTA.
 - Route package-page readers to API-key acquisition with npm/package attribution.
 - Avoid GitHub-only or installer-runtime attribution on the npm package page.
 
@@ -54,6 +56,8 @@ Allowed API-key URL pattern:
 
 Purpose:
 
+- Prefer `npx skills add Evolink-AI/nanobanana-2-lite-image-generate-api-skill` for Agent install instructions.
+- Keep direct `npx` installer commands available as fallback/manual install paths.
 - Open or show the tracked key URL during setup.
 - Print `EVOLINK_KEY_URL`, `AGENT_NEXT_ACTION`, and `ENV_VAR_EXPORT`.
 - Tell the agent to collect the pasted key, save it as `EVOLINK_API_KEY`, validate it with the non-generating credits endpoint, and then show a ready-to-use prompt.

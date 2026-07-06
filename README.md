@@ -44,7 +44,7 @@
 
 > **GitHub surface:** this README is the GitHub repository front door. API-key links use `utm_source=github&utm_medium=readme`; agent install handoff blocks intentionally use `utm_source=skill&utm_medium=install` because the copied prompt runs inside an installer/agent setup flow. The npm package page uses a separate [README.npm.md](README.npm.md).
 
-> **AI Agent?** Start here: copy an Agent Auto-Install prompt below, install the skill with `npx`, then read [**llms-install.md**](llms-install.md) for agent-specific setup.
+> **AI Agent?** Start here: copy an Agent Auto-Install prompt below. The primary install command is `npx skills add Evolink-AI/nanobanana-2-lite-image-generate-api-skill`; `npx` is only the fallback/direct CLI path.
 
 ---
 
@@ -71,7 +71,7 @@
 
 ## Agent Skill First
 
-This repository is designed for agents and developers who want a one-line install path. The primary workflow is to install the skill with `npx`, let the agent read `SKILL.md`, and only then call the EvoLink API.
+This repository is designed for agents and developers who want a one-line install path. The primary workflow is to install the skill with `npx skills add Evolink-AI/nanobanana-2-lite-image-generate-api-skill`, let the agent read `SKILL.md`, and only then call the EvoLink API.
 
 | Skill slug | NPM package | Model ID | Primary env var |
 |---|---|---|---|
@@ -83,7 +83,13 @@ This repository is designed for agents and developers who want a one-line instal
 
 ## Installation
 
-Install into your agent skills directory. Use npm for Claude Code, Codex, OpenClaw, and Hermes; OpenClaw users can also install directly from GitHub.
+Install into your agent skills directory. Use `npx skills add` as the primary Agent install path for Claude Code, Codex, OpenClaw, Hermes, and other agent runtimes. Use `npx` only as a fallback or direct CLI path.
+
+### Agent Install (Recommended)
+
+```bash
+npx skills add Evolink-AI/nanobanana-2-lite-image-generate-api-skill
+```
 
 ### OpenClaw
 
@@ -91,7 +97,7 @@ Install into your agent skills directory. Use npm for Claude Code, Codex, OpenCl
 openclaw skills add https://github.com/Evolink-AI/nanobanana-2-lite-image-generate-api-skill
 ```
 
-### Install via npm (Recommended)
+### Install via npm (Fallback / Direct CLI)
 
 ```bash
 npx evolink-nanobanana-2-lite@latest
@@ -135,12 +141,13 @@ The install prompts below use the installer-runtime key URL. That is intentional
 ```text
 Install the Nanobanana 2 Lite Image Generation skill by running:
 
-npx evolink-nanobanana-2-lite@latest -y --path ~/.claude/skills
+npx skills add Evolink-AI/nanobanana-2-lite-image-generate-api-skill
 
 After installation, open this tracked key URL for the user: https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image
 Ask the user to sign in, create an API key, return to this agent chat, and paste the key.
-Set it as EVOLINK_API_KEY for this session, verify it with `curl --fail https://api.evolink.ai/v1/credits -H "Authorization: Bearer $EVOLINK_API_KEY"`, then read ~/.claude/skills/nanobanana-2-lite-image/SKILL.md.
+Set it as EVOLINK_API_KEY for this session, verify it with `curl --fail https://api.evolink.ai/v1/credits -H "Authorization: Bearer $EVOLINK_API_KEY"`, then read the installed nanobanana-2-lite-image/SKILL.md.
 After verification succeeds, tell the user: "The skill is ready. You can ask: Use Nanobanana 2 Lite Image Generation to create a blue ceramic cup on a white table."
+If `npx skills` is unavailable, use this fallback: `npx evolink-nanobanana-2-lite@latest -y --path ~/.claude/skills`.
 ```
 
 ### Codex
@@ -148,12 +155,13 @@ After verification succeeds, tell the user: "The skill is ready. You can ask: Us
 ```text
 Install the Nanobanana 2 Lite Image Generation skill by running:
 
-npx evolink-nanobanana-2-lite@latest -y --path ~/.codex/skills
+npx skills add Evolink-AI/nanobanana-2-lite-image-generate-api-skill
 
 After installation, open this tracked key URL for the user: https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image
 Ask the user to sign in, create an API key, return to this agent chat, and paste the key.
-Set it as EVOLINK_API_KEY for this session, verify it with `curl --fail https://api.evolink.ai/v1/credits -H "Authorization: Bearer $EVOLINK_API_KEY"`, then read ~/.codex/skills/nanobanana-2-lite-image/SKILL.md.
+Set it as EVOLINK_API_KEY for this session, verify it with `curl --fail https://api.evolink.ai/v1/credits -H "Authorization: Bearer $EVOLINK_API_KEY"`, then read the installed nanobanana-2-lite-image/SKILL.md.
 After verification succeeds, tell the user: "The skill is ready. You can ask: Use Nanobanana 2 Lite Image Generation to create a blue ceramic cup on a white table."
+If `npx skills` is unavailable, use this fallback: `npx evolink-nanobanana-2-lite@latest -y --path ~/.codex/skills`.
 ```
 
 ### OpenClaw
@@ -161,12 +169,13 @@ After verification succeeds, tell the user: "The skill is ready. You can ask: Us
 ```text
 Install the Nanobanana 2 Lite Image Generation skill by running:
 
-npx evolink-nanobanana-2-lite@latest -y --path ~/.openclaw/skills
+npx skills add Evolink-AI/nanobanana-2-lite-image-generate-api-skill
 
 After installation, open this tracked key URL for the user: https://evolink.ai/dashboard/keys?utm_source=skill&utm_medium=install&utm_campaign=nanobanana-2-lite-image
 Ask the user to sign in, create an API key, return to this agent chat, and paste the key.
-Set it as EVOLINK_API_KEY for this session, verify it with `curl --fail https://api.evolink.ai/v1/credits -H "Authorization: Bearer $EVOLINK_API_KEY"`, then read ~/.openclaw/skills/nanobanana-2-lite-image/SKILL.md.
+Set it as EVOLINK_API_KEY for this session, verify it with `curl --fail https://api.evolink.ai/v1/credits -H "Authorization: Bearer $EVOLINK_API_KEY"`, then read the installed nanobanana-2-lite-image/SKILL.md.
 After verification succeeds, tell the user: "The skill is ready. You can ask: Use Nanobanana 2 Lite Image Generation to create a blue ceramic cup on a white table."
+If `npx skills` is unavailable, use this fallback: `npx evolink-nanobanana-2-lite@latest -y --path ~/.openclaw/skills`.
 ```
 
 ### One-Liner
@@ -313,10 +322,10 @@ EvoLink returns usage details in the task creation response. The official exampl
 
 | Agent | Install command |
 |---|---|
-| Claude Code | `npx evolink-nanobanana-2-lite@latest -y --path ~/.claude/skills` |
-| Codex | `npx evolink-nanobanana-2-lite@latest -y --path ~/.codex/skills` |
-| OpenClaw | `npx evolink-nanobanana-2-lite@latest -y --path ~/.openclaw/skills` |
-| Hermes | `npx evolink-nanobanana-2-lite@latest -y --path ~/.hermes/skills` |
+| Claude Code | `npx skills add Evolink-AI/nanobanana-2-lite-image-generate-api-skill` |
+| Codex | `npx skills add Evolink-AI/nanobanana-2-lite-image-generate-api-skill` |
+| OpenClaw | `npx skills add Evolink-AI/nanobanana-2-lite-image-generate-api-skill` |
+| Hermes | `npx skills add Evolink-AI/nanobanana-2-lite-image-generate-api-skill` |
 
 ---
 

@@ -43,8 +43,25 @@ function assertUrlSet(rel, accepted) {
   }
 }
 
+function assertPrimaryAgentInstall(rel) {
+  const text = read(rel);
+  const primary = 'npx skills add Evolink-AI/nanobanana-2-lite-image-generate-api-skill';
+  const fallback = 'npx evolink-nanobanana-2-lite@latest -y --path';
+  if (!text.includes(primary)) {
+    fail(`${rel} must include ${primary} as the primary Agent install command.`);
+    return;
+  }
+  if (text.includes(fallback) && text.indexOf(fallback) < text.indexOf(primary)) {
+    fail(`${rel} shows fallback npx before the primary npx skills Agent install command.`);
+  }
+}
+
 assertUrlSet('README.md', [allowed.githubReadme, allowed.skillInstall]);
 assertUrlSet('README.npm.md', [allowed.npmPackage]);
+
+for (const rel of ['README.md', 'README.npm.md', 'llms-install.md', 'bin/cli.js']) {
+  assertPrimaryAgentInstall(rel);
+}
 
 for (const rel of ['README.npm.md']) {
   const text = read(rel);

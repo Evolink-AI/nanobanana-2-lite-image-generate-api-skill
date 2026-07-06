@@ -45,6 +45,7 @@ function printBanner() {
 function printHelp() {
   printBanner();
   console.log(bold('Usage:'));
+  console.log('  npx skills add Evolink-AI/nanobanana-2-lite-image-generate-api-skill  ' + dim('# preferred Agent install'));
   console.log('  npx evolink-nanobanana-2-lite            ' + dim('# interactive installer'));
   console.log('  npx evolink-nanobanana-2-lite "prompt"   ' + dim('# run the API directly'));
   console.log('  npx evolink-nanobanana-2-lite -y          ' + dim('# non-interactive (for AI agents / CI)'));
@@ -63,8 +64,8 @@ function printHelp() {
   console.log('  --skill          ' + dim('Print the skill definition (SKILL.md) to stdout.'));
   console.log('');
   console.log(bold('For AI agents — self-install workflow:'));
-  console.log('  1. ' + dim('npx evolink-nanobanana-2-lite --llms') + '           ' + dim('# read installation guide'));
-  console.log('  2. ' + dim('npx evolink-nanobanana-2-lite -y --path <dir>') + '  ' + dim('# install silently'));
+  console.log('  1. ' + dim('npx skills add Evolink-AI/nanobanana-2-lite-image-generate-api-skill') + ' ' + dim('# preferred install'));
+  console.log('  2. ' + dim('npx evolink-nanobanana-2-lite -y --path <dir>') + '  ' + dim('# fallback install'));
   console.log('  3. ' + dim('npx evolink-nanobanana-2-lite --skill') + '          ' + dim('# load skill definition'));
   console.log('');
   console.log(bold('What this installer does:'));
@@ -91,7 +92,13 @@ You are an AI agent. Follow these steps to install the Nanobanana 2 Lite Image G
 
 ## Step 1: Install
 
-Run this command (silent mode, no user interaction needed):
+Run this primary Agent install command:
+
+\`\`\`bash
+npx skills add Evolink-AI/nanobanana-2-lite-image-generate-api-skill
+\`\`\`
+
+If npx skills is unavailable, use this fallback:
 
 \`\`\`bash
 npx evolink-nanobanana-2-lite@latest -y --path {SKILLS_DIR}
