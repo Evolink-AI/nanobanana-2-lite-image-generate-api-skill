@@ -1,6 +1,6 @@
 {
   "name": "evolink-nanobanana-2-lite",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "EvoLink API examples and agent skill for Nanobanana 2 Lite Image Generation.",
   "readmeFilename": "README.md",
   "scripts": {
@@ -38,7 +38,7 @@
     "type": "git",
     "url": "git+https://github.com/Evolink-AI/nanobanana-2-lite-image-generate-api-skill.git"
   },
-  "homepage": "https://evolink.ai",
+  "homepage": "https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-lite-image-generate?utm_source=npm&utm_medium=package&utm_campaign=nanobanana-2-lite-image",
   "engines": {
     "node": ">=16"
   }

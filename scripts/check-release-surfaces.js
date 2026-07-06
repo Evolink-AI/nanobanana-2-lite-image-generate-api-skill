@@ -8,6 +8,7 @@ const path = require('path');
 const root = path.resolve(__dirname, '..');
 const campaign = 'nanobanana-2-lite-image';
 const keyBase = 'https://evolink.ai/dashboard/keys';
+const modelHomepage = `https://docs.evolink.ai/en/api-manual/image-series/nanobanana/nanobanana-2-lite-image-generate?utm_source=npm&utm_medium=package&utm_campaign=${campaign}`;
 const allowed = {
   githubReadme: `${keyBase}?utm_source=github&utm_medium=readme&utm_campaign=${campaign}`,
   npmPackage: `${keyBase}?utm_source=npm&utm_medium=package&utm_campaign=${campaign}`,
@@ -81,6 +82,10 @@ for (const rel of ['bin/cli.js', 'llms-install.md', 'SKILL.md']) {
 }
 
 const packageJson = JSON.parse(read('package.json'));
+if (packageJson.homepage !== modelHomepage) {
+  fail(`package.json homepage must be the npm-attributed model page: ${modelHomepage}`);
+}
+
 if (!packageJson.readmeFilename || packageJson.readmeFilename !== 'README.md') {
   fail('package.json must force readmeFilename to README.md for npm rendering.');
 }
